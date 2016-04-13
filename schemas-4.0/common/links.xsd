@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        LINKS
+    -->
+	<xs:complexType name="linksType">
+		<xs:annotation>
+			<xs:documentation>
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="link" type="linkType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="linkType">
+        <xs:attribute name="id" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation>Indicates the unique Portfolio Manager identifier used to define this entity.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+		<xs:attribute name="linkDescription" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The description of the link.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="link" type="xs:anyURI">
+			<xs:annotation>
+				<xs:documentation>The URL to a web service call for subsequent processing.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="httpMethod" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The HTTP method to the web service call.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="hint">
+			<xs:annotation>
+				<xs:documentation>A brief description of the information returned from the link.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

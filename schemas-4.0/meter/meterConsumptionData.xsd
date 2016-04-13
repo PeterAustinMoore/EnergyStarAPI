@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../common/links.xsd"/>
+	<xs:include schemaLocation="../common/audit.xsd"/>
+	<xs:element name="meterData" type="meterDataType"/>
+	<xs:element name="meterConsumption" type="meterConsumptionType">
+		<xs:annotation>
+			<xs:documentation>Consumption data used for a meter that is set up to be metered.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="meterDelivery" type="meterDeliveryType"/>
+	<xs:complexType name="meterDataType">
+		<xs:annotation>
+			<xs:documentation>A service type used for getting and receiving meter consumption data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="meterConsumption" minOccurs="0" maxOccurs="120"/>
+			<xs:element ref="meterDelivery" minOccurs="0" maxOccurs="120"/>
+			<xs:element name="links" type="linksType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="meterConsumptionType">
+		<xs:annotation>
+			<xs:documentation>A service type used for representing a meter consumption entry</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id of the meter consumption entry.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="startDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>The first date of the meter consumption reading.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>The last date of the meter consumption reading.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="usage" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>The quantity of the meter consumption. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cost" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The cost of meter's consumption. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="energyExportedOffSite" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The amount of energy exported off site from an on-site solar or on-site wind installation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="greenPower" type="greenPowerType" minOccurs="0"/>
+			<xs:element name="RECOwnership" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For Onsite Solar or Onsite Wind energy, whether the RECs have been retained by the property owner.
+</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Owned"/>
+						<xs:enumeration value="Sold"/>
+						<xs:enumeration value="Arbitrage"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="estimatedValue" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Whether the meter consumption is an estimated value.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="isGreenPower" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Whether the meter is for Green Power.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="meterDeliveryType">
+		<xs:annotation>
+			<xs:documentation>Delivery data used for a meter that is set up for bulk delivery. </xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id of the meter delivery entry.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deliveryDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Indicates the date of the delivery.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="quantity" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Indicates the quantity of energy delivered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cost" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates the cost associated with the energy delivered.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="estimatedValue" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="greenPowerType">
+		<xs:all>
+			<xs:element name="value" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>The quantity of Green Power used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sources">
+				<xs:annotation>
+					<xs:documentation>This source allocation must add up to 100%</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="biomassPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of biomass of all the sources.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="biogasPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of biogas of all the sources.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="geothermalPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of geothermal of all the sources. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="smallHydroPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of small hydro of all the sources. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="solarPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of solar power of all the sources. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="windPct" type="xs:decimal">
+							<xs:annotation>
+								<xs:documentation>The percentage of wind power of all the sources. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+                        <xs:element name="unknownPct" type="xs:decimal">
+                            <xs:annotation>
+                                <xs:documentation>The percentage of unknown power of all the sources. </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="generationLocation">
+				<xs:annotation>
+					<xs:documentation>The location (power plant, eGrid subregion, or unknown) of where the green power was generated.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="generationPlant" type="xs:integer">
+							<xs:annotation>
+								<xs:documentation>The plant code of the power plant where the green power is generated.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="eGridSubRegion" type="eGridSubRegionType">
+							<xs:annotation>
+								<xs:documentation>The eGrid subregion code of where the green power is generated.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="unknown" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>The location of the green power is unknown.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="eGridSubRegionType">
+		<xs:annotation>
+			<xs:documentation>Denotes the list of eGrid subregions that green power can be generated from.
+            </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AKGD">
+				<xs:annotation>
+					<xs:documentation>ASCC Alaska Grid</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AKMS">
+				<xs:annotation>
+					<xs:documentation>ASCC Miscellaneous</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AZNM">
+				<xs:annotation>
+					<xs:documentation>WECC Southwest</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAMX">
+				<xs:annotation>
+					<xs:documentation>WECC California</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ERCT">
+				<xs:annotation>
+					<xs:documentation>ERCOT All</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRCC">
+				<xs:annotation>
+					<xs:documentation>FRCC All</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HIMS">
+				<xs:annotation>
+					<xs:documentation>HICC Miscellaneous</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HIOA">
+				<xs:annotation>
+					<xs:documentation>HICC Oahu</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MROE">
+				<xs:annotation>
+					<xs:documentation>MRO East</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MROW">
+				<xs:annotation>
+					<xs:documentation>MRO West</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEWE">
+				<xs:annotation>
+					<xs:documentation>NPCC New England</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NWPP">
+				<xs:annotation>
+					<xs:documentation>WECC Northwest</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NYCW">
+				<xs:annotation>
+					<xs:documentation>NPCC NYC/Westchester</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NYLI">
+				<xs:annotation>
+					<xs:documentation>NPCC Long Island</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NYUP">
+				<xs:annotation>
+					<xs:documentation>NPCC Upstate NY</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RFCE">
+				<xs:annotation>
+					<xs:documentation>RFC East</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RFCM">
+				<xs:annotation>
+					<xs:documentation>RFC Michigan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RFCW">
+				<xs:annotation>
+					<xs:documentation>RFC West</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RMPA">
+				<xs:annotation>
+					<xs:documentation>WECC Rockies</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SPNO">
+				<xs:annotation>
+					<xs:documentation>SPP North</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SPSO">
+				<xs:annotation>
+					<xs:documentation>SPP South</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRMV">
+				<xs:annotation>
+					<xs:documentation>SERC Mississippi Valley</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRMW">
+				<xs:annotation>
+					<xs:documentation>SERC Midwest</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRSO">
+				<xs:annotation>
+					<xs:documentation>SERC South</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRTV">
+				<xs:annotation>
+					<xs:documentation>SERC Tennessee Valley</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRVC">
+				<xs:annotation>
+					<xs:documentation>SERC Virginia/Carolina</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

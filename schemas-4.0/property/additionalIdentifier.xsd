@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="additionalIdentifiers">
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>
+                    Represents a list of property identifiers.
+                </xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element ref="additionalIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="additionalIdentifier">
+		<xs:annotation>
+			<xs:documentation>The values associated to the additional property identifier for a given property.  This is used when you provide the values (update or add) to an additional property identifier for a specific property.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="additionalIdentifierType"/>
+				<xs:element name="description"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The description of the specific additional property identifier when values are provided for it.   </xs:documentation>
+					</xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="1000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+				</xs:element>
+				<xs:element name="value"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The value of the additional property identifier for a specific property.            </xs:documentation>
+					</xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="4000"/>
+                        </xs:restriction>
+				    </xs:simpleType>
+				</xs:element>
+			</xs:all>
+			<xs:attribute name="id" type="xs:long" use="optional">
+				<xs:annotation>
+					<xs:documentation>The id of the transaction when values are provided for a specific additional property identifier and property.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="additionalIdentifierTypes">
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>
+                    Represents a list of property identifiers types that have been standardized with the EPA.
+                </xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element ref="additionalIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="additionalIdentifierType">
+		<xs:annotation>
+			<xs:documentation>The additional property identifier that EPA has approved for use.  This is used when you just want to get the complete static list of additional property identifiers.  This set includes the unique identifier #1, #2, and #3 and the set that EPA is maintaining/approved.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id of the additional property identifier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="standardApproved" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>Whether the additional property identifier is from the standard list that EPA is maintaining (versus the generic set of 3 unique identifier fields that can be used)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The name of the additional property identifier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The description of the additional property identifier.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

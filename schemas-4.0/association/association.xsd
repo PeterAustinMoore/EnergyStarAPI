@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="meterPropertyAssociationList" type="meterPropertyAssociationListType">
+		<xs:annotation>
+			<xs:documentation>Indicates the association you want to create for a set of meters and a specific property.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="meterPropertyUseAssociationList" type="meterListType">
+		<xs:annotation>
+			<xs:documentation>Indicates the association you want to create for a set of meters and a specific property use.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="meterPropertyAssociationListType">
+		<xs:all>
+			<xs:element name="energyMeterAssociation" type="energyMeterAssocAndConfigType" minOccurs="0"/>
+			<xs:element name="waterMeterAssociation" type="waterMeterAssocAndConfigType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="energyMeterAssocAndConfigType">
+		<xs:all>
+			<xs:element name="meters" type="meterListType"/>
+			<xs:element ref="propertyRepresentation" minOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="waterMeterAssocAndConfigType">
+		<xs:all>
+			<xs:element name="meters" type="meterListType"/>
+			<xs:element ref="propertyRepresentation" minOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="meterListType">
+		<xs:sequence>
+			<xs:element name="meterId" type="xs:long" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Id of the meter to associate to the specific property or property use.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="propertyRepresentation">
+		<xs:annotation>
+			<xs:documentation>Indication of what energy is covered by the energy meters you associate together for calculations</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>
+                    Indicates whether the whole facility energy consumption or only a portion of that total is represented by its meters. (Added 03/2011)
+                </xs:documentation>
+			</xs:annotation>
+			<xs:all>
+				<xs:element name="propertyRepresentationType">
+					<xs:annotation>
+						<xs:documentation>
+                            Indication of what energy is covered by the energy meters you associate together for calculations
+                        </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Whole Property">
+								<xs:annotation>
+									<xs:documentation>The energy meters are associated with the whole property.</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Common Area Energy Consumption Only">
+								<xs:annotation>
+									<xs:documentation>The energy meters are associated with the common area only.</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Tenant Energy Consumption Only">
+								<xs:annotation>
+									<xs:documentation>The energy meters are associated with a combination of the tenant and common areas.</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Combination of Tenant and Common Area Consumption">
+								<xs:annotation>
+									<xs:documentation>
+                                        If selected, you must specify the energy uses with the "tenantCommonAreaEnergyUseList" XML element.
+                                    </xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="Other">
+								<xs:annotation>
+									<xs:documentation>
+                                        The energy meters are not associated with any of the given choices, you are specifiying "Other."
+                                    </xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="No Selection Made"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="tenantCommonAreaEnergyUseList" type="tenantCommonAreaEnergyUseInformationType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+Indicates the various energy uses if a "Combination of Tenant and Common Area Consumption" property representation type is selected. This is only required when "Combination of Tenant and Common Area Consumption" is specified. At least one of the 8 options must be selected.
+                        </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="propertyRepresentationTypeOtherDesc" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+If you chose "Other" for the property representation, this is the description.
+                        </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="500"/>
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="tenantCommonAreaEnergyUseInformationType">
+		<xs:sequence>
+			<xs:element name="energyUse" type="tenantCommonAreaEnergyType" maxOccurs="8">
+				<xs:annotation>
+					<xs:documentation>
+                        Indicates the various energy uses if a "Combination of Tenant and Common Area Consumption" meter configuration type is selected. This is only required when a metering configuration type of "Combination of Tenant and Common Area Consumption" is specified. At least one of the 8 options must be selected.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="tenantCommonAreaEnergyType">
+		<xs:annotation>
+			<xs:documentation>
+                Lists of energy uses for the Combination of Tenant and Common Area Consumption metering configuration. At least one must be selected. (Added 11/2011).
+            </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Tenant Heating"/>
+			<xs:enumeration value="Tenant Cooling"/>
+			<xs:enumeration value="Tenant Hot Water"/>
+			<xs:enumeration value="Tenant Plug Load/Electricity"/>
+			<xs:enumeration value="Common Area Heating"/>
+			<xs:enumeration value="Common Area Cooling"/>
+			<xs:enumeration value="Common Area Hot Water"/>
+			<xs:enumeration value="Common Area Plug Load/Electricity"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

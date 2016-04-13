@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="swimmingPool" type="swimmingPoolType">
+		<xs:annotation>
+			<xs:documentation>Any heated swimming pools located either inside or outside. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="swimmingPoolType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="poolSize"/>
+						<xs:element ref="poolLocation" minOccurs="0"/>
+						<xs:element ref="monthsInUse" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

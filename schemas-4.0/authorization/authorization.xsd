@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../response/response.xsd"/>
+	<xs:include schemaLocation="../property/property.xsd"/>
+	<xs:include schemaLocation="../meter/meter.xsd"/>
+	<xs:include schemaLocation="../account/account.xsd"/>
+	<xs:include schemaLocation="../common/customField.xsd"/>
+    <xs:include schemaLocation="../common/audit.xsd"/>
+	<xs:element name="pendingList" type="pendingListType">
+		<xs:annotation>
+			<xs:documentation>Contains the list of pending connection and share requests.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="notificationList" type="notificationListType">
+		<xs:annotation>
+			<xs:documentation>Contains the list of notifications that indicate an account, property, or meter is no longer accessible.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sharingResponse" type="sharingResponseType">
+		<xs:annotation>
+			<xs:documentation>Contains the information when responding to an accept/reject connection or share request.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="terminateSharingResponse" type="terminateShareResponseType">
+		<xs:annotation>
+			<xs:documentation>Contains the information when terminating an existing connection or share.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="sharingResponseType">
+		<xs:sequence>
+			<xs:element name="action" type="acceptRejectType">
+				<xs:annotation>
+					<xs:documentation>The action you want to take in response to the share request (either Accept or Reject).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="note" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The optional note that you can include with your accept/reject response.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="terminateShareResponseType">
+		<xs:sequence>
+			<xs:element name="note" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The optional note that you can include with your termination request.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="notificationListType">
+		<xs:sequence>
+			<xs:element name="notification" type="notificationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="notificationType">
+		<xs:sequence>
+            <xs:element name="notificationTypeCode" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The notification type code of the notification.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="notificationId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id number of the notification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The description of the notification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id number of the account to the corresponding notification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="propertyId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id number of the property to the corresponding notification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="meterId" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id number of the meter to the corresponding notification.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="notificationCreatedDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="notificationCreatedBy" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The account name of the user who created the corresponding notification.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="notificationCreatedByAccountId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The account id of the user who created the corresponding notification.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pendingListType">
+		<xs:sequence>
+			<xs:element name="account" type="pendingAccountsType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Indicates a pending connection request and detailed information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="property" type="pendingPropertiesType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Indicates a pending property share request and detailed information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="meter" type="pendingMetersType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Indicates a pending meter share request and detailed information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="links" type="linksType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pendingAccountsType">
+		<xs:sequence>
+			<xs:element name="accountId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id of the Portfolio Manager Account requesting to connect with you.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="customFieldList" minOccurs="0"/>
+			<xs:element ref="accountInfo"/>
+            <xs:element name="connectionAudit" type="logType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="accountInfo">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="firstName" type="xs:string"/>
+				<xs:element name="lastName" type="xs:string"/>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="address" type="addressType"/>
+				<xs:element name="jobTitle" type="xs:string"/>
+				<xs:element name="phone" type="xs:string"/>
+				<xs:element name="organization" type="xs:string" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="pendingPropertiesType">
+		<xs:sequence>
+			<xs:element name="propertyId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The ID number of the property.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="customFieldList" minOccurs="0"/>
+			<xs:element name="accessLevel" type="shareLevelType">
+				<xs:annotation>
+					<xs:documentation>The level of access for the property share request:  Read or Read Write.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id to the account requesting the property share.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="propertyInfo" type="propertyType"/>
+            <xs:element name="shareAudit" type="logType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="pendingMetersType">
+		<xs:sequence>
+			<xs:element name="meterId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id of the meter.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="propertyId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id of the corresponding property.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accountId" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id to the account requesting the meter share.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="customFieldList" minOccurs="0"/>
+			<xs:element name="accessLevel" type="shareLevelType">
+				<xs:annotation>
+					<xs:documentation>The level of access for the meter share request:  Read or Read Write</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="propertyInfo" type="propertyType"/>
+			<xs:element name="meterInfo" type="meterType"/>
+            <xs:element name="shareAudit" type="logType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="acceptRejectType">
+		<xs:annotation>
+			<xs:documentation>The response to the sharing request</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Accept"/>
+			<xs:enumeration value="Reject"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="shareLevelType">
+		<xs:annotation>
+			<xs:documentation>The sharing level</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Read"/>
+			<xs:enumeration value="Read Write"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

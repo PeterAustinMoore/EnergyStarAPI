@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="prison" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Prison/Incarceration federal, state, local, or private-sector Buildings used for the detention of persons awaiting trial or convicted of crimes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="manufacturingIndustrialPlant" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for manufacturing or assembling goods. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ambulatorySurgicalCenter" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Health care facilities that provide same-day surgical care, including diagnostic and preventive procedures.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="bowlingAlley" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for public or private, recreational or professional bowling.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherPublicServices" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used by public-sector organizations to provide public services other than those described in the available property uses in Portfolio Manager (i.e. services other than offices, courthouses, drinking water treatment and distribution plants, fire stations, libraries, mailing centers or post offices, police stations, prisons or incarceration facilities, social or meeting halls, transportation terminals or stations, or wastewater treatment plants).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherLodgingResidential" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for residential  purposes other than those described in the available property uses in Portfolio Manager (i.e. residential other than multifamily residential, single family home, senior care community, residence hall/dormitory, barracks, prison/incarceration, or hotel). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="casino" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings primarily used to conduct gambling activities including both electronic and live table games. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="personalServices" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to sell services rather than physical goods.  Examples include dry cleaners, salons, spas, etc.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="mailingCenterPostOffice" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used as retail establishments dedicated to mail and mailing supplies.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="library" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to store and manage collections of literary and artistic materials such as books, periodicals, newspapers, films, etc. that can be used for reference or lending.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherSpecialityHospital" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Long-term acute care hospitals, inpatient rehabilitation facilities, including Cancer Centers and Psychiatric and Substance Abuse Hospitals/Facilities.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="conventionCenter" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily for large conferences, exhibitions, and similar events.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="veterinaryOffice" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for the medical care and treatment of animals.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="urgentCareClinicOtherOutpatient" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to treat patients, usually on an unscheduled, walk-in basis, who have an injury or illness that requires immediate care but is not serious enough to warrant a visit to an emergency department.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="energyPowerStation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings containing machinery and/or associated equipment for generating electricity or district heat (steam, hot water, or chilled water) from a raw fuel, including fossil fuel power plants, traditional district heat power plants, combined heat and power plants,  nuclear reactors, hydroelectric dams, or facilities associated with a solar or wind farm.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherServices" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings in which primarily services are offered, but which does not fit into the Personal Services or Repair Services property types.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="barNightclub" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily for social/entertainment purposes, and is characterized by most of the revenue being generated from the sale of beverages instead of food. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherUtility" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used by a utility for some purpose other than general office or energy/power generation.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="zoo" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily to provide habitat to live animals and which may include public or private viewing and educational programs.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="automobileDealership" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for the sale of new or used cars and light trucks.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="museum" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that display collections to outside visitors for public viewing and enjoyment and for informational/educational purposes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherRecreation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings primarily used for recreation that do not meet the definition of any other property use defined in Portfolio Manager. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherRestaurantBar" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for preparation and sale of ready-to-eat food and beverages, but which does not fit into the fast food restaurant, restaurant, or bar/nightclub property types.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lifestyleCenter" type="otherType">
+		<xs:annotation>
+			<xs:documentation>A mixed use commercial development that includes retail stores and leisure amenities, where individual retail stores typically contain an entrance accessible from the outside and are not connected by internal walkways. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="policeStation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for federal, state, or local police forces and their associated office space.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="preschoolDaycare" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for educational programs or daytime supervision/recreation for young children before they attend Kindergarten.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="raceTrack" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily to hold racing events such as vehicle races, track/field races, horse races, and/or dog-races.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="selfStorageFacility" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that are used for private storage.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fastFoodRestaurant" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for the preparation and sale of ready-to-eat food. Also known as Quick Service Restaurant.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="laboratory" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that provide controlled conditions in which scientific research, measurement, and experiments are performed or practical science is taught.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="repairServices" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings in which some type of repair service is provided.  Examples include vehicle service or repair shops, shoe repair, jewelry repair, locksmiths, etc.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherTechnologyScience" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for science and technology related services other than Laboratories and Data Centers.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fireStation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to provide emergency response services associated with fires. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="performingArts" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for public or private artistic or musical performances.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="outpatientRehabilitationPhysicalTherapy" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to provide diagnosis and treatment for rehabilitation and physical therapy.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="stripMall" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings comprising more than one retail store, restaurant, or other business, in an open-air configuration where each establishment has an exterior entrance to the public and there are no internal walkways.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="rollerRink" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily for roller-skating, inline skating/rollerblading, or skateboarding. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherEducation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for religious, community, or other educational purposes not described in the available property uses in Portfolio Manager (i.e. educational purposes other than adult education, college/university, K-12 school, pre-school/daycare and vocational schools).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fitnessCenterHealthClubGym" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for recreational or professional athletic training and related activities. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="aquarium" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used to provide aquatic habitat primarily to live animals and which may include public or private viewing areas and  educational programs. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="foodService" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for preparation and sale of food and beverages, but which do not meet the definition of Restaurant, Cafeteria, or Bar/Nightclub.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="restaurant" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for preparation and sale of ready-to-eat food and beverages, but which do not fit in the fast food property type.  (Fast casual, casual, and fine dining restaurants).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="enclosedMall" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that house multiple stores, often “anchored” by one or more department stores, and with interior walkways. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="iceCurlingRink" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that include one or more ice sheets used for public or private, recreational or professional skating, curling, hockey, or other similar activities.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="adultEducation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily for providing adult students with continuing education, workforce development, or professional development outside of the college or university setting.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherEntertainmentPublicAssembly" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings whose primary use is for entertainment or public gatherings and that do not meet the definition of any other property use defined in Portfolio Manager.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="movieTheater" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used for public or private film screenings.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="transportationTerminalStation" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings used primarily for accessing public or private transportation.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="vocationalSchool" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Vocational School Buildings primarily designed to teach skilled trades to students, including trade and technical schools.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="socialMeetingHall" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings primarily used for public or private gatherings.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="otherMall" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings containing a collection of stores whose purpose is the sale of goods, but which do not fit into the enclosed mall, lifestyle center, or strip mall property types.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="other" type="otherType">
+		<xs:annotation>
+			<xs:documentation>Buildings that do not fall within any of the available property use categories in Portfolio Manager. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="otherType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="weeklyOperatingHours" minOccurs="0"/>
+						<xs:element ref="numberOfComputers" minOccurs="0"/>
+						<xs:element ref="numberOfWorkers" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

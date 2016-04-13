@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="baselineAndTarget" type="baselineAndTargetType">
+		<xs:annotation>
+			<xs:documentation>Baseline dates and performance target settings can be updated for your property.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="baselineAndTargetType">
+		<xs:sequence>
+			<xs:element name="baseline" type="baselineType" minOccurs="0"/>
+			<xs:element name="target" type="performanceTargetType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="baselineType">
+		<xs:sequence>
+			<xs:element name="energyBaselineDate" type="baselineDateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The baseline date used for your property's energy consumption.  Must be in the format of YYYY-MM or "System Determined" to indicate for Portfolio Manager to automatically calculate the baseline date.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="waterBaselineDate" type="baselineDateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The baseline date used for your property's water consumption.  Must be in the format of YYYY-MM or "System Determined" to indicate for Portfolio Manager to automatically calculate the baseline date.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="performanceTargetType">
+		<xs:sequence>
+			<xs:element name="targetMetric">
+				<xs:annotation>
+					<xs:documentation>Target metric option</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="No Target"/>
+						<xs:enumeration value="Target ENERGY STAR Score"/>
+						<xs:enumeration value="Target % Better than Baseline"/>
+						<xs:enumeration value="Target % Better than Median"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="targetValue" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Target metric value used for the selected target metric.  This is not required if a "No Target" metric is selected.  For target metric options of "Target % Better than Baseline" and "Target % Better than Median", the valid range is 0-100.  For "Target ENERGY STAR Score", the valid range is 1-100.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+                        <xs:enumeration value="0"/>
+                        <xs:enumeration value="1"/>
+                        <xs:enumeration value="2"/>
+                        <xs:enumeration value="3"/>
+                        <xs:enumeration value="4"/>
+                        <xs:enumeration value="5"/>
+                        <xs:enumeration value="6"/>
+                        <xs:enumeration value="7"/>
+                        <xs:enumeration value="8"/>
+                        <xs:enumeration value="9"/>
+                        <xs:enumeration value="10"/>
+                        <xs:enumeration value="11"/>
+                        <xs:enumeration value="12"/>
+                        <xs:enumeration value="13"/>
+                        <xs:enumeration value="14"/>
+                        <xs:enumeration value="15"/>
+                        <xs:enumeration value="16"/>
+                        <xs:enumeration value="17"/>
+                        <xs:enumeration value="18"/>
+                        <xs:enumeration value="19"/>
+                        <xs:enumeration value="20"/>
+                        <xs:enumeration value="21"/>
+                        <xs:enumeration value="22"/>
+                        <xs:enumeration value="23"/>
+                        <xs:enumeration value="24"/>
+                        <xs:enumeration value="25"/>
+                        <xs:enumeration value="26"/>
+                        <xs:enumeration value="27"/>
+                        <xs:enumeration value="28"/>
+                        <xs:enumeration value="29"/>
+                        <xs:enumeration value="30"/>
+                        <xs:enumeration value="31"/>
+                        <xs:enumeration value="32"/>
+                        <xs:enumeration value="33"/>
+                        <xs:enumeration value="34"/>
+                        <xs:enumeration value="35"/>
+                        <xs:enumeration value="36"/>
+                        <xs:enumeration value="37"/>
+                        <xs:enumeration value="38"/>
+                        <xs:enumeration value="39"/>
+                        <xs:enumeration value="40"/>
+                        <xs:enumeration value="41"/>
+                        <xs:enumeration value="42"/>
+                        <xs:enumeration value="43"/>
+                        <xs:enumeration value="44"/>
+                        <xs:enumeration value="45"/>
+                        <xs:enumeration value="46"/>
+                        <xs:enumeration value="47"/>
+                        <xs:enumeration value="48"/>
+                        <xs:enumeration value="49"/>
+                        <xs:enumeration value="50"/>
+                        <xs:enumeration value="51"/>
+                        <xs:enumeration value="52"/>
+                        <xs:enumeration value="53"/>
+                        <xs:enumeration value="54"/>
+                        <xs:enumeration value="55"/>
+                        <xs:enumeration value="56"/>
+                        <xs:enumeration value="57"/>
+                        <xs:enumeration value="58"/>
+                        <xs:enumeration value="59"/>
+                        <xs:enumeration value="60"/>
+                        <xs:enumeration value="61"/>
+                        <xs:enumeration value="62"/>
+                        <xs:enumeration value="63"/>
+                        <xs:enumeration value="64"/>
+                        <xs:enumeration value="65"/>
+                        <xs:enumeration value="66"/>
+                        <xs:enumeration value="67"/>
+                        <xs:enumeration value="68"/>
+                        <xs:enumeration value="69"/>
+                        <xs:enumeration value="70"/>
+                        <xs:enumeration value="71"/>
+                        <xs:enumeration value="72"/>
+                        <xs:enumeration value="73"/>
+                        <xs:enumeration value="74"/>
+                        <xs:enumeration value="75"/>
+                        <xs:enumeration value="76"/>
+                        <xs:enumeration value="77"/>
+                        <xs:enumeration value="78"/>
+                        <xs:enumeration value="79"/>
+                        <xs:enumeration value="80"/>
+                        <xs:enumeration value="81"/>
+                        <xs:enumeration value="82"/>
+                        <xs:enumeration value="83"/>
+                        <xs:enumeration value="84"/>
+                        <xs:enumeration value="85"/>
+                        <xs:enumeration value="86"/>
+                        <xs:enumeration value="87"/>
+                        <xs:enumeration value="88"/>
+                        <xs:enumeration value="89"/>
+                        <xs:enumeration value="90"/>
+                        <xs:enumeration value="91"/>
+                        <xs:enumeration value="92"/>
+                        <xs:enumeration value="93"/>
+                        <xs:enumeration value="94"/>
+                        <xs:enumeration value="95"/>
+                        <xs:enumeration value="96"/>
+                        <xs:enumeration value="97"/>
+                        <xs:enumeration value="98"/>
+                        <xs:enumeration value="99"/>
+                        <xs:enumeration value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="baselineDateType">
+		<xs:union memberTypes="xs:gYearMonth">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="System Determined"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+</xs:schema>

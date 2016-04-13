@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="hospital" type="hospitalType">
+		<xs:annotation>
+			<xs:documentation>A general medical and surgical hospital (including critical access hospitals and children’s hospitals). These facilities provide acute care services intended to treat patients for short periods of time, including emergency medical care, physician's office services, diagnostic care, ambulatory care, surgical care, and limited specialty services such as rehabilitation and cancer care.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="hospitalType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="hasLaboratory" minOccurs="0"/>
+						<xs:element ref="onSiteLaundryFacility" minOccurs="0"/>
+						<xs:element ref="maximumNumberOfFloors" minOccurs="0"/>
+						<xs:element ref="numberOfStaffedBeds" minOccurs="0"/>
+						<xs:element ref="numberOfFTEWorkers" minOccurs="0"/>
+						<xs:element ref="numberOfMriMachines" minOccurs="0"/>
+						<xs:element ref="ownedBy" minOccurs="0"/>
+						<xs:element ref="isTertiaryCare" minOccurs="0"/>
+                        <xs:element ref="licensedBedCapacity" minOccurs="0"/>
+                        <xs:element ref="numberOfWorkers" minOccurs="0"/>
+                        <xs:element ref="percentCooled" minOccurs="0"/>
+                        <xs:element ref="percentHeated" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

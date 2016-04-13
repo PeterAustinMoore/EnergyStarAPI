@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="stadiumOpen" type="stadiumOpenType">
+		<xs:annotation>
+			<xs:documentation>structures used primarily for professional or collegiate sports and entertainment events in which the playing field is. (Typically with a capacity of 5,000 seats or more)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="stadiumOpenType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="enclosedFloorArea" minOccurs="0"/>
+						<xs:element ref="numberOfSportingEventsPerYear" minOccurs="0"/>
+						<xs:element ref="numberOfConcertShowEventsPerYear" minOccurs="0"/>
+						<xs:element ref="numberOfSpecialOtherEventsPerYear" minOccurs="0"/>
+						<xs:element ref="sizeOfElectronicScoreBoards" minOccurs="0"/>
+						<xs:element ref="iceEvents" minOccurs="0"/>
+						<xs:element ref="numberOfComputers" minOccurs="0"/>
+						<xs:element ref="numberOfWalkInRefrigerationUnits" minOccurs="0"/>
+						<xs:element ref="percentCooled" minOccurs="0"/>
+						<xs:element ref="percentHeated" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

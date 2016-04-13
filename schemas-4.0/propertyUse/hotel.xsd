@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="hotel" type="hotelType">
+		<xs:annotation>
+			<xs:documentation>Buildings that sell overnight accommodations on a room/suite and nightly basis, and typically include a bath/shower and other facilities in guest rooms.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="hotelType">
+		<xs:annotation>
+			<xs:documentation>This xml type represents a property use type. If an element is missing it will be
+                populated with a default value.
+            </xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="fullServiceSpaFloorArea" minOccurs="0"/>
+						<xs:element ref="gymCenterFloorArea" minOccurs="0"/>
+						<xs:element ref="hoursPerDayGuestsOnsite" minOccurs="0"/>
+						<xs:element ref="numberOfCommercialRefrigerationUnits" minOccurs="0"/>
+						<xs:element ref="numberOfGuestMealsServedPerYear" minOccurs="0"/>
+						<xs:element ref="numberOfHotelRooms" minOccurs="0"/>
+						<xs:element ref="laundryFacility" minOccurs="0"/>
+						<xs:element ref="percentCooled" minOccurs="0"/>
+						<xs:element ref="percentHeated" minOccurs="0"/>
+						<xs:element ref="cookingFacilities" minOccurs="0"/>
+						<xs:element ref="amountOfLaundryProcessedAnnually" minOccurs="0"/>
+						<xs:element ref="numberOfWorkers" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

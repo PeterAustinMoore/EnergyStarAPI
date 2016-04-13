@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+
+    <xs:include schemaLocation="../common/audit.xsd"/>
+
+    <xs:simpleType name="yesNo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes"/>
+            <xs:enumeration value="No"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="useYesNoType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" type="yesNo" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="useStringType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="useDecimalType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                                <xs:minInclusive value="0"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="useIntegerType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:int">
+                                <xs:minInclusive value="0"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="percentCooledType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="0"/>
+                                <xs:enumeration value="10"/>
+                                <xs:enumeration value="20"/>
+                                <xs:enumeration value="30"/>
+                                <xs:enumeration value="40"/>
+                                <xs:enumeration value="50"/>
+                                <xs:enumeration value="60"/>
+                                <xs:enumeration value="70"/>
+                                <xs:enumeration value="80"/>
+                                <xs:enumeration value="90"/>
+                                <xs:enumeration value="100"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="percentHeatedType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="0"/>
+                                <xs:enumeration value="10"/>
+                                <xs:enumeration value="20"/>
+                                <xs:enumeration value="30"/>
+                                <xs:enumeration value="40"/>
+                                <xs:enumeration value="50"/>
+                                <xs:enumeration value="60"/>
+                                <xs:enumeration value="70"/>
+                                <xs:enumeration value="80"/>
+                                <xs:enumeration value="90"/>
+                                <xs:enumeration value="100"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="percentOfficeCooledType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="50% or more"/>
+                                <xs:enumeration value="Less than 50%"/>
+                                <xs:enumeration value="Not Air Conditioned"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="percentOfficeHeatedType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="50% or more"/>
+                                <xs:enumeration value="Less than 50%"/>
+                                <xs:enumeration value="Not Heated"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="monthsInUseType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:int">
+                                <xs:minInclusive value="1"/>
+                                <xs:maxInclusive value="12"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="monthsSchoolInUseType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:int">
+                                <xs:minInclusive value="8"/>
+                                <xs:maxInclusive value="12"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="poolType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Indoor"/>
+                                <xs:enumeration value="Outdoor"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="residentPopulationType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="No specific resident population"/>
+                                <xs:enumeration value="Dedicated Student"/>
+                                <xs:enumeration value="Dedicated Military"/>
+                                <xs:enumeration value="Dedicated Senior/Independent Living"/>
+                                <xs:enumeration value="Dedicated Special Accessibility Needs"/>
+                                <xs:enumeration value="Other dedicated housing"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="poolSizeType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Recreational (20 yards x 15 yards)"/>
+                                <xs:enumeration value="Short Course (25 yards x 20 yards)"/>
+                                <xs:enumeration value="Olympic (50 meters x 25 meters)"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ownedByType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="For Profit"/>
+                                <xs:enumeration value="Non Profit"/>
+                                <xs:enumeration value="Governmental"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="coolingEquipmentRedundancyType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="N"/>
+                                <xs:enumeration value="N+1"/>
+                                <xs:enumeration value="N+2"/>
+                                <xs:enumeration value="2N"/>
+                                <xs:enumeration value="Greater than 2N"/>
+                                <xs:enumeration value="None of the Above"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="upsSystemRedundancyType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="N"/>
+                                <xs:enumeration value="N+1"/>
+                                <xs:enumeration value="N+2"/>
+                                <xs:enumeration value="2N"/>
+                                <xs:enumeration value="Greater than 2N"/>
+                                <xs:enumeration value="None of the Above"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="hoursPerDayGuestsOnsiteType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Less Than 15"/>
+                                <xs:enumeration value="15 To 19"/>
+                                <xs:enumeration value="More Than 20"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="itEnergyConfigurationType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="UPS Supports Only IT Equipment"/>
+                                <xs:enumeration value="UPS Include Non IT Load Less Than 10%"/>
+                                <xs:enumeration value="UPS Include Non-IT Load Greater Than 10% Load Submetered"/>
+                                <xs:enumeration value="UPS Include Non IT Load Greater Than 10% Load Not Submetered"/>
+                                <xs:enumeration value="Facility Has No UPS"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="onsiteLaundryType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Linens only"/>
+                                <xs:enumeration value="Terry only"/>
+                                <xs:enumeration value="Both linens and terry"/>
+                                <xs:enumeration value="No laundry facility"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="numberOfWeekdaysType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:int">
+                                <xs:minInclusive value="0"/>
+                                <xs:maxInclusive value="5"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="amountOfLaundryProcessedAnnuallyType">
+		<xs:complexContent>
+			<xs:extension base="useAttributeBase">
+				<xs:sequence>
+					<xs:element name="value" type="xs:decimal" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="units" type="amountOfLaundryProcessedAnnuallyUnitsType" use="required">
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+    <xs:simpleType name="amountOfLaundryProcessedAnnuallyUnitsType">
+		<xs:restriction base="xs:string">
+            <xs:enumeration value="pounds"/>
+            <xs:enumeration value="Kilogram"/>
+            <xs:enumeration value="short tons"/>
+        </xs:restriction>
+	</xs:simpleType>
+
+    <xs:complexType name="PlantDesignFlowRateType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="units" type="PlantDesignFlowRateUnitsType" use="required">
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="PlantDesignFlowRateUnitsType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Million Gallons per Day"/>
+            <xs:enumeration value="Cubic Meters per Day"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="lengthOfAllOpenClosedRefrigerationUnitsType">
+        <xs:complexContent>
+            <xs:extension base="useAttributeBase">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="units" type="lengthUnitsType" use="required">
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="lengthUnitsType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Feet"/>
+            <xs:enumeration value="Meters"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="useAttributeBase" abstract="true">
+        <xs:sequence>
+            <xs:element name="audit" type="logType" minOccurs="0"/>
+        </xs:sequence>
+		<xs:attribute name="id" type="xs:long" use="optional"/>
+		<xs:attribute name="currentAsOf" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date that the characteristic is current as of.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="temporary" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>The characteristic is a temporary value (true/false)
+</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+        <xs:attribute name="default" use="optional">
+            <xs:annotation>
+                <xs:documentation>Indicates whether the value for this characteristic was calculated by the system
+                    using default values (Yes, No, or N/A). If the characteristic is required for benchmarking and the value is being defaulted then it is set to Yes otherwise No.  If the
+                    characteristic is not required for benchmarking then it is set to N/A. This attribute only applies to retrieving data.  It will be ignored if provided as input.
+                    Also note that even though gross floor area is required for benchmarking, it is set to No since the system never provides a value for that characteristic.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Yes"/>
+                    <xs:enumeration value="No"/>
+                    <xs:enumeration value="N/A"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+	</xs:complexType>
+</xs:schema>

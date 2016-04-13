@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+
+    <xs:include schemaLocation="../propertyUse/characteristicType.xsd"/>
+
+	<xs:complexType name="grossFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>The total gross floor area of all buildings at the property, measured at the exterior boundary of the enclosing walls, including all areas within the building (common, tenant, maintenance, etc). </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="floorAreaTypeBase">
+				<xs:sequence>
+					<xs:element name="value" type="xs:int"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+    <xs:complexType name="optionalFloorAreaType">
+		<xs:complexContent>
+			<xs:extension base="floorAreaTypeBase">
+				<xs:sequence>
+					<xs:element name="value" type="xs:int" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+    <xs:complexType name="floorAreaTypeBase">
+		<xs:complexContent>
+			<xs:extension base="useAttributeBase">
+				<xs:attribute name="units" type="grossFloorAreaUnitsType" use="required">
+					<xs:annotation>
+						<xs:documentation>The units of the Gross Floor Area (Square Foot or Square Meter).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="grossFloorAreaUnitsType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Square Feet"/>
+			<xs:enumeration value="Square Meters"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

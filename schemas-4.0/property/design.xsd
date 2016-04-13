@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
+	<!-- Includes -->
+	<xs:include schemaLocation="../propertyUse/propertyUseList.xsd"/>
+	<xs:include schemaLocation="propertyDesign.xsd"/>
+	<xs:include schemaLocation="../meter/meter.xsd"/>
+	<!-- Elements -->
+	<xs:element name="design" type="designBaseType">
+		<xs:annotation>
+			<xs:documentation>The property design characteristics.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- Types -->
+	<xs:complexType name="designBaseType">
+		<xs:all>
+			<xs:element name="propertyUses">
+				<xs:annotation>
+					<xs:documentation>Most property use characteristics XML attributes (the id, currentAsOf, and temporary) are not applicable and will be ignored if provided.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:group ref="uses" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="drinkingWaterInfluentFlow" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The planned average daily flow for a Water Treatment and Distribution Plant.  This value must be specified if one of the property uses is of the type Water Distribution.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wasteWaterInfluentFlow" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The planned average daily flow of water through a Wastewater Treatment Plant.  This value must be specified if one of the property uses is of the type Waste Water Treatment Plant.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="itSiteEnergy" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The amount of energy required by the server racks, storage silos, and other IT equipment in the Data Center at the output of UPS.  This value must be specified if one of the property uses is of the type Data Center.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="estimatedEnergyList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If you can estimate how much energy your design property will use annually, provide it here to receive a score (if available) and energy metrics for your design.  You can then use these metrics to compare to your target and/or property's operation (in the future).  To get the most accurate metrics, provide estimates for total annual energy from each potential energy source.
+</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="entries" type="estimatedEnergyListType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="target">
+				<xs:annotation>
+					<xs:documentation>The Design Target can be either ENERGY STAR Score or "% Better than Median."</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="targetTypeScore" type="targetTypeScoreType">
+							<xs:annotation>
+								<xs:documentation>The ENERGY STAR Score that is your target score.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="targetTypePercentage" type="targetTypePercentageType">
+							<xs:annotation>
+								<xs:documentation>The "% Better than the Median" that is your target.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="targetTypeScoreType">
+		<xs:sequence>
+			<xs:element name="value" type="targetTypeScoreValuesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="targetTypePercentageType">
+		<xs:sequence>
+			<xs:element name="value" type="targetTypePercentageValuesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="targetTypeScoreValuesType">
+		<xs:restriction base="xs:int">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="13"/>
+            <xs:enumeration value="14"/>
+            <xs:enumeration value="15"/>
+            <xs:enumeration value="16"/>
+            <xs:enumeration value="17"/>
+            <xs:enumeration value="18"/>
+            <xs:enumeration value="19"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="22"/>
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="25"/>
+            <xs:enumeration value="26"/>
+            <xs:enumeration value="27"/>
+            <xs:enumeration value="28"/>
+            <xs:enumeration value="29"/>
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="33"/>
+            <xs:enumeration value="34"/>
+            <xs:enumeration value="35"/>
+            <xs:enumeration value="36"/>
+            <xs:enumeration value="37"/>
+            <xs:enumeration value="38"/>
+            <xs:enumeration value="39"/>
+            <xs:enumeration value="40"/>
+            <xs:enumeration value="41"/>
+            <xs:enumeration value="42"/>
+            <xs:enumeration value="43"/>
+            <xs:enumeration value="44"/>
+            <xs:enumeration value="45"/>
+            <xs:enumeration value="46"/>
+            <xs:enumeration value="47"/>
+            <xs:enumeration value="48"/>
+            <xs:enumeration value="49"/>
+            <xs:enumeration value="50"/>
+            <xs:enumeration value="51"/>
+            <xs:enumeration value="52"/>
+            <xs:enumeration value="53"/>
+            <xs:enumeration value="54"/>
+            <xs:enumeration value="55"/>
+            <xs:enumeration value="56"/>
+            <xs:enumeration value="57"/>
+            <xs:enumeration value="58"/>
+            <xs:enumeration value="59"/>
+            <xs:enumeration value="60"/>
+            <xs:enumeration value="61"/>
+            <xs:enumeration value="62"/>
+            <xs:enumeration value="63"/>
+            <xs:enumeration value="64"/>
+            <xs:enumeration value="65"/>
+            <xs:enumeration value="66"/>
+            <xs:enumeration value="67"/>
+            <xs:enumeration value="68"/>
+            <xs:enumeration value="69"/>
+            <xs:enumeration value="70"/>
+            <xs:enumeration value="71"/>
+            <xs:enumeration value="72"/>
+            <xs:enumeration value="73"/>
+            <xs:enumeration value="74"/>
+            <xs:enumeration value="75"/>
+            <xs:enumeration value="76"/>
+            <xs:enumeration value="77"/>
+            <xs:enumeration value="78"/>
+            <xs:enumeration value="79"/>
+            <xs:enumeration value="80"/>
+            <xs:enumeration value="81"/>
+            <xs:enumeration value="82"/>
+            <xs:enumeration value="83"/>
+            <xs:enumeration value="84"/>
+            <xs:enumeration value="85"/>
+            <xs:enumeration value="86"/>
+            <xs:enumeration value="87"/>
+            <xs:enumeration value="88"/>
+            <xs:enumeration value="89"/>
+            <xs:enumeration value="90"/>
+            <xs:enumeration value="91"/>
+            <xs:enumeration value="92"/>
+            <xs:enumeration value="93"/>
+            <xs:enumeration value="94"/>
+            <xs:enumeration value="95"/>
+            <xs:enumeration value="96"/>
+            <xs:enumeration value="97"/>
+            <xs:enumeration value="98"/>
+            <xs:enumeration value="99"/>
+            <xs:enumeration value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="targetTypePercentageValuesType">
+		<xs:restriction base="xs:int">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="13"/>
+            <xs:enumeration value="14"/>
+            <xs:enumeration value="15"/>
+            <xs:enumeration value="16"/>
+            <xs:enumeration value="17"/>
+            <xs:enumeration value="18"/>
+            <xs:enumeration value="19"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="22"/>
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="25"/>
+            <xs:enumeration value="26"/>
+            <xs:enumeration value="27"/>
+            <xs:enumeration value="28"/>
+            <xs:enumeration value="29"/>
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="33"/>
+            <xs:enumeration value="34"/>
+            <xs:enumeration value="35"/>
+            <xs:enumeration value="36"/>
+            <xs:enumeration value="37"/>
+            <xs:enumeration value="38"/>
+            <xs:enumeration value="39"/>
+            <xs:enumeration value="40"/>
+            <xs:enumeration value="41"/>
+            <xs:enumeration value="42"/>
+            <xs:enumeration value="43"/>
+            <xs:enumeration value="44"/>
+            <xs:enumeration value="45"/>
+            <xs:enumeration value="46"/>
+            <xs:enumeration value="47"/>
+            <xs:enumeration value="48"/>
+            <xs:enumeration value="49"/>
+            <xs:enumeration value="50"/>
+            <xs:enumeration value="51"/>
+            <xs:enumeration value="52"/>
+            <xs:enumeration value="53"/>
+            <xs:enumeration value="54"/>
+            <xs:enumeration value="55"/>
+            <xs:enumeration value="56"/>
+            <xs:enumeration value="57"/>
+            <xs:enumeration value="58"/>
+            <xs:enumeration value="59"/>
+            <xs:enumeration value="60"/>
+            <xs:enumeration value="61"/>
+            <xs:enumeration value="62"/>
+            <xs:enumeration value="63"/>
+            <xs:enumeration value="64"/>
+            <xs:enumeration value="65"/>
+            <xs:enumeration value="66"/>
+            <xs:enumeration value="67"/>
+            <xs:enumeration value="68"/>
+            <xs:enumeration value="69"/>
+            <xs:enumeration value="70"/>
+            <xs:enumeration value="71"/>
+            <xs:enumeration value="72"/>
+            <xs:enumeration value="73"/>
+            <xs:enumeration value="74"/>
+            <xs:enumeration value="75"/>
+            <xs:enumeration value="76"/>
+            <xs:enumeration value="77"/>
+            <xs:enumeration value="78"/>
+            <xs:enumeration value="79"/>
+            <xs:enumeration value="80"/>
+            <xs:enumeration value="81"/>
+            <xs:enumeration value="82"/>
+            <xs:enumeration value="83"/>
+            <xs:enumeration value="84"/>
+            <xs:enumeration value="85"/>
+            <xs:enumeration value="86"/>
+            <xs:enumeration value="87"/>
+            <xs:enumeration value="88"/>
+            <xs:enumeration value="89"/>
+            <xs:enumeration value="90"/>
+            <xs:enumeration value="91"/>
+            <xs:enumeration value="92"/>
+            <xs:enumeration value="93"/>
+            <xs:enumeration value="94"/>
+            <xs:enumeration value="95"/>
+            <xs:enumeration value="96"/>
+            <xs:enumeration value="97"/>
+            <xs:enumeration value="98"/>
+            <xs:enumeration value="99"/>
+            <xs:enumeration value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="estimatedEnergyListType">
+		<xs:sequence>
+			<xs:element name="designEntry" type="estimatedEnergyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="estimatedEnergyType">
+		<xs:all>
+			<xs:element name="energyType" type="allEnergyMetersType"/>
+			<xs:element name="energyUnit" type="designUnitOfMeasure"/>
+			<xs:element name="estimatedAnnualEnergyUsage" type="xs:long"/>
+			<xs:element name="energyRateCost" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The energy rate is the price of energy per unit.  This is the price. If provided, you must also provide the energyRateCostUnit.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="energyRateCostUnit" type="designUnitOfMeasure" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The energy rate is the price of energy per unit.  This is the unit. If provided, you must also provide the energyRateCost.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="allEnergyMetersType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Electric"/>
+			<xs:enumeration value="Electric on Site Solar"/>
+			<xs:enumeration value="Electric on Site Wind"/>
+            <xs:enumeration value="Natural Gas"/>
+			<xs:enumeration value="Propane"/>
+			<xs:enumeration value="Diesel"/>
+			<xs:enumeration value="District Steam"/>
+			<xs:enumeration value="District Hot Water"/>
+            <xs:enumeration value="District Chilled Water - Absorption Chiller using Natural Gas"/>
+            <xs:enumeration value="District Chilled Water - Electric-Driven Chiller"/>
+            <xs:enumeration value="District Chilled Water - Engine-Driven Chiller using Natural Gas"/>
+            <xs:enumeration value="District Chilled Water - Other"/>
+			<xs:enumeration value="Fuel Oil No 1"/>
+			<xs:enumeration value="Fuel Oil No 2"/>
+			<xs:enumeration value="Fuel Oil No 4"/>
+			<xs:enumeration value="Fuel Oil No 5 or 6"/>
+			<xs:enumeration value="Coal Anthracite"/>
+			<xs:enumeration value="Coal Bituminous"/>
+			<xs:enumeration value="Coke"/>
+			<xs:enumeration value="Wood"/>
+			<xs:enumeration value="Liquid Propane"/>
+			<xs:enumeration value="Kerosene"/>
+			<xs:enumeration value="Other (Energy)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="designUnitOfMeasure">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ccf (hundred cubic feet)"/>
+			<xs:enumeration value="cf (cubic feet)"/>
+			<xs:enumeration value="cm (Cubic meters)"/>
+			<xs:enumeration value="Cords"/>
+			<xs:enumeration value="Gallons (UK)"/>
+			<xs:enumeration value="Gallons (US)"/>
+			<xs:enumeration value="GJ"/>
+			<xs:enumeration value="kBtu (thousand Btu)"/>
+			<xs:enumeration value="kcf (thousand cubic feet)"/>
+			<xs:enumeration value="Kcm (Thousand Cubic meters)"/>
+			<xs:enumeration value="KGal (thousand gallons) (UK)"/>
+			<xs:enumeration value="KGal (thousand gallons) (US)"/>
+			<xs:enumeration value="Kilogram"/>
+			<xs:enumeration value="KLbs. (thousand pounds)"/>
+			<xs:enumeration value="kWh (thousand Watt-hours)"/>
+			<xs:enumeration value="Liters"/>
+			<xs:enumeration value="MBtu (million Btu)"/>
+			<xs:enumeration value="MCF(million cubic feet)"/>
+			<xs:enumeration value="mg/l (milligrams per liter)"/>
+			<xs:enumeration value="MGal (million gallons) (UK)"/>
+			<xs:enumeration value="MGal (million gallons) (US)"/>
+			<xs:enumeration value="Million Gallons per Day"/>
+			<xs:enumeration value="MLbs. (million pounds)"/>
+			<xs:enumeration value="MWh (million Watt-hours)"/>
+			<xs:enumeration value="pounds"/>
+			<xs:enumeration value="Pounds per year"/>
+			<xs:enumeration value="therms"/>
+			<xs:enumeration value="ton hours"/>
+			<xs:enumeration value="Tonnes (metric)"/>
+			<xs:enumeration value="tons"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:group name="uses">
+		<xs:choice>
+            <xs:element ref="prison"/>
+			<xs:element ref="refrigeratedWarehouse"/>
+			<xs:element ref="retail"/>
+			<xs:element ref="hospital"/>
+			<xs:element ref="medicalOffice"/>
+			<xs:element ref="dataCenter"/>
+			<xs:element ref="courthouse"/>
+			<xs:element ref="singleFamilyHome"/>
+			<xs:element ref="nonRefrigeratedWarehouse"/>
+			<xs:element ref="multifamilyHousing"/>
+			<xs:element ref="office"/>
+			<xs:element ref="wholesaleClubSupercenter"/>
+			<xs:element ref="seniorCareCommunity"/>
+			<xs:element ref="swimmingPool"/>
+			<xs:element ref="residenceHallDormitory"/>
+			<xs:element ref="wastewaterTreatmentPlant"/>
+			<xs:element ref="distributionCenter"/>
+			<xs:element ref="worshipFacility"/>
+			<xs:element ref="financialOffice"/>
+			<xs:element ref="drinkingWaterTreatmentAndDistribution"/>
+			<xs:element ref="parking"/>
+			<xs:element ref="supermarket"/>
+			<xs:element ref="barracks"/>
+			<xs:element ref="hotel"/>
+			<xs:element ref="k12School"/>
+			<xs:element ref="bankBranch"/>
+			<xs:element ref="collegeUniversity"/>
+			<xs:element ref="indoorArena"/>
+			<xs:element ref="otherStadium"/>
+			<xs:element ref="stadiumClosed"/>
+			<xs:element ref="stadiumOpen"/>
+			<xs:element ref="manufacturingIndustrialPlant"/>
+			<xs:element ref="ambulatorySurgicalCenter"/>
+			<xs:element ref="bowlingAlley"/>
+			<xs:element ref="otherPublicServices"/>
+			<xs:element ref="otherLodgingResidential"/>
+			<xs:element ref="casino"/>
+			<xs:element ref="personalServices"/>
+			<xs:element ref="mailingCenterPostOffice"/>
+			<xs:element ref="library"/>
+			<xs:element ref="otherSpecialityHospital"/>
+			<xs:element ref="conventionCenter"/>
+			<xs:element ref="veterinaryOffice"/>
+			<xs:element ref="urgentCareClinicOtherOutpatient"/>
+			<xs:element ref="energyPowerStation"/>
+			<xs:element ref="otherServices"/>
+			<xs:element ref="barNightclub"/>
+			<xs:element ref="otherUtility"/>
+			<xs:element ref="zoo"/>
+			<xs:element ref="automobileDealership"/>
+			<xs:element ref="museum"/>
+			<xs:element ref="otherRecreation"/>
+			<xs:element ref="otherRestaurantBar"/>
+			<xs:element ref="lifestyleCenter"/>
+			<xs:element ref="policeStation"/>
+			<xs:element ref="preschoolDaycare"/>
+			<xs:element ref="raceTrack"/>
+			<xs:element ref="selfStorageFacility"/>
+			<xs:element ref="fastFoodRestaurant"/>
+			<xs:element ref="laboratory"/>
+			<xs:element ref="convenienceStoreWithoutGasStation"/>
+			<xs:element ref="repairServices"/>
+			<xs:element ref="otherTechnologyScience"/>
+			<xs:element ref="fireStation"/>
+			<xs:element ref="foodSales"/>
+			<xs:element ref="performingArts"/>
+			<xs:element ref="outpatientRehabilitationPhysicalTherapy"/>
+			<xs:element ref="stripMall"/>
+			<xs:element ref="rollerRink"/>
+			<xs:element ref="otherEducation"/>
+			<xs:element ref="fitnessCenterHealthClubGym"/>
+			<xs:element ref="aquarium"/>
+			<xs:element ref="foodService"/>
+			<xs:element ref="restaurant"/>
+			<xs:element ref="enclosedMall"/>
+			<xs:element ref="iceCurlingRink"/>
+			<xs:element ref="adultEducation"/>
+			<xs:element ref="otherEntertainmentPublicAssembly"/>
+			<xs:element ref="movieTheater"/>
+			<xs:element ref="transportationTerminalStation"/>
+			<xs:element ref="vocationalSchool"/>
+			<xs:element ref="socialMeetingHall"/>
+			<xs:element ref="otherMall"/>
+			<xs:element ref="convenienceStoreWithGasStation"/>
+			<xs:element ref="other"/>
+		</xs:choice>
+	</xs:group>
+</xs:schema>

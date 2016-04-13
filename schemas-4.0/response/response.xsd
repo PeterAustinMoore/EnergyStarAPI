@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../common/links.xsd"/>
+	<xs:element name="response" type="responseType"/>
+	<!--
+           RESPONSE
+    -->
+	<xs:complexType name="responseType">
+		<xs:annotation>
+			<xs:documentation>A response of the operation.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id of the entity that you are trying to add or update.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="links" type="linksType" minOccurs="0"/>
+			<xs:element name="errors" type="errorsType" minOccurs="0"/>
+			<xs:element name="warnings" type="warningsType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="status" type="statusType" use="required">
+			<xs:annotation>
+				<xs:documentation>The status of the web service call.  Either Ok or Error.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--
+        ERRORS
+    -->
+	<xs:complexType name="errorType">
+		<xs:attribute name="errorNumber" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The number of the error.  </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="errorDescription" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The description of the error.  </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="errorsType">
+		<xs:annotation>
+			<xs:documentation>A list of errors that caused this request to fail.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="error" type="errorType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The error of the web service call.  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+        WARNINGS
+    -->
+	<xs:complexType name="warningsType">
+		<xs:annotation>
+			<xs:documentation>A list of warnings.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="warning" type="warningType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The warning of the web service call.  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="warningType">
+		<xs:attribute name="warningNumber" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The number of the warning.  </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="warningDescription" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The description of the warning.  </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--
+        STATUS
+    -->
+	<xs:simpleType name="statusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ok"/>
+			<xs:enumeration value="Error"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

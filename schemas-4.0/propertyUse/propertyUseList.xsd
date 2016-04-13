@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+               attributeFormDefault="unqualified" version="4.0">
+
+    <xs:include schemaLocation="refrigeratedWarehouse.xsd"/>
+    <xs:include schemaLocation="retail.xsd"/>
+    <xs:include schemaLocation="hospital.xsd"/>
+    <xs:include schemaLocation="medicalOffice.xsd"/>
+    <xs:include schemaLocation="dataCenter.xsd"/>
+    <xs:include schemaLocation="courthouse.xsd"/>
+    <xs:include schemaLocation="singleFamilyHome.xsd"/>
+    <xs:include schemaLocation="nonRefrigeratedWarehouse.xsd"/>
+    <xs:include schemaLocation="multifamilyHousing.xsd"/>
+    <xs:include schemaLocation="office.xsd"/>
+    <xs:include schemaLocation="wholesaleClubSupercenter.xsd"/>
+    <xs:include schemaLocation="seniorCareCommunity.xsd"/>
+    <xs:include schemaLocation="swimmingPool.xsd"/>
+    <xs:include schemaLocation="residenceHallDormitory.xsd"/>
+    <xs:include schemaLocation="wastewaterTreatmentPlant.xsd"/>
+    <xs:include schemaLocation="distributionCenter.xsd"/>
+    <xs:include schemaLocation="worshipFacility.xsd"/>
+    <xs:include schemaLocation="financialOffice.xsd"/>
+    <xs:include schemaLocation="drinkingWaterTreatmentAndDistribution.xsd"/>
+    <xs:include schemaLocation="parking.xsd"/>
+    <xs:include schemaLocation="supermarket.xsd"/>
+    <xs:include schemaLocation="foodSales.xsd"/>
+    <xs:include schemaLocation="convenienceStoreWithGasStation.xsd"/>
+    <xs:include schemaLocation="convenienceStoreWithoutGasStation.xsd"/>
+    <xs:include schemaLocation="barracks.xsd"/>
+    <xs:include schemaLocation="hotel.xsd"/>
+    <xs:include schemaLocation="k12School.xsd"/>
+    <xs:include schemaLocation="bankBranch.xsd"/>
+    <xs:include schemaLocation="collegeUniversity.xsd"/>
+    <xs:include schemaLocation="indoorArena.xsd"/>
+    <xs:include schemaLocation="otherStadium.xsd"/>
+    <xs:include schemaLocation="stadiumClosed.xsd"/>
+    <xs:include schemaLocation="stadiumOpen.xsd"/>
+    <xs:include schemaLocation="otherPropertyUses.xsd"/>
+
+</xs:schema>

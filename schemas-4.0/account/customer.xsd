@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="../authorization/authorization.xsd"/>
+	<xs:element name="customer">
+		<xs:annotation>
+			<xs:documentation>Contains information for a Portfolio Manager account.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="username" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The username for your customer's account.</xs:documentation>
+					</xs:annotation>
+					
+					<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+				</xs:element>
+                <xs:element name="includeTestPropertiesInGraphics" type="xs:boolean" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>This indicates if the Test Property in the account is included in the graphs on My Portfolio page. If true then test property is included and if false then Test property is excluded.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+				<xs:element ref="accountInfo" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

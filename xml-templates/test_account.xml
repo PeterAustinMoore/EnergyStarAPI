@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<account>
+<username>new_user</username>
+<password>EnergyStar!</password>
+<webserviceUser>true</webserviceUser>
+<searchable>false</searchable>
+<contact>
+<firstName>Joe</firstName>
+<lastName>Shmoe</lastName>
+<address address1="123 Main St" city="Arlington"
+state="VA" postalCode="22201" country="US"/>
+<email>ENTER EMAIL ADDRESS HERE</email>
+<phone>"123-123-1345"</phone>
+<jobTitle>Building Administrator Data Exchange User</jobTitle>
+</contact>
+<organization name="LOL">
+<primaryBusiness>Other</primaryBusiness>
+<otherBusinessDescription>Other</otherBusinessDescription>
+<energyStarPartner>false</energyStarPartner>
+</organization>
+<securityAnswers>
+<securityAnswer>
+<question id="-1"/>
+<answer>New York</answer>
+</securityAnswer>
+<securityAnswer>
+<question id="-2"/>
+<answer>Main St</answer>
+</securityAnswer>
+</securityAnswers>
+</account>

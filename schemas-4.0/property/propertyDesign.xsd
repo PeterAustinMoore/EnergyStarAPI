@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../common/address.xsd"/>
+	<xs:include schemaLocation="../common/grossFloorArea.xsd"/>
+	<xs:include schemaLocation="property.xsd"/>
+	<xs:complexType name="propertyDesignType">
+		<xs:all>
+			<xs:element name="name">
+				<xs:annotation>
+					<xs:documentation>The name of the property.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="primaryFunction" type="primaryFunctionType">
+				<xs:annotation>
+					<xs:documentation>The primary function of the property.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="grossFloorArea" type="grossFloorAreaType">
+				<xs:annotation>
+					<xs:documentation>The Gross Floor Area of the property.  The id, currentAsOf, and temporary XML attributes are not applicable and will be ignored if provided. It is not needed by Target Finder.
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="plannedConstructionCompletionYear" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>The year planned for construction completion.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="address" type="addressType"/>
+			<xs:element name="numberOfBuildings">
+				<xs:annotation>
+					<xs:documentation>The estimated number of buildings for this property.  Please note that this is only for informational purposes.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

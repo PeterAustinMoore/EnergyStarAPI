@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
+    <!-- Includes -->
+    <xs:include schemaLocation="../propertyUse/propertyUseList.xsd"/>
+    <xs:include schemaLocation="../property/propertyDesign.xsd"/>
+    <xs:include schemaLocation="../meter/meter.xsd"/>
+    <xs:include schemaLocation="../property/design.xsd"/>
+    <!-- Elements -->
+    <xs:element name="targetFinder" type="unAuthDesignType"/>
+    <!-- Types -->
+    <xs:complexType name="unAuthDesignType">
+        <xs:all>
+            <xs:element name="propertyInfo" type="propertyDesignType"/>
+            <xs:element name="propertyUses">
+                <xs:annotation>
+                    <xs:documentation>Most property use characteristics XML attributes (id, currentAsOf, and temporary) are not applicable and will be ignored if provided. </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:group ref="uses" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="drinkingWaterInfluentFlow" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The planned average daily flow for a Water Treatment and Distribution Plant.  This value must be specified if one of the property uses is of the type Water Distribution.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="wasteWaterInfluentFlow" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The planned average daily flow of water through a Wastewater Treatment Plant.  This value must be specified if one of the property uses is of the type Waste Water Treatment Plant.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="itSiteEnergy" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The amount of energy required by the server racks, storage silos, and other IT equipment in the Data Center at the output of UPS.  This value must be specified if one of the property uses is of the type Data Center</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="estimatedEnergyList" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>If you can estimate how much energy your design property will use annually, provide it here to receive a score (if available) and energy metrics for your design.  You can then use these metrics to compare to your target and/or property's operation (in the future).  To get the most accurate metrics, provide estimates for total annual energy from each potential energy source.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="entries" type="estimatedEnergyListType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="target">
+                <xs:annotation>
+                    <xs:documentation>The Design Target can be either ENERGY STAR Score or "% Better than Median."</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="targetTypeScore" type="targetTypeScoreType">
+                            <xs:annotation>
+                                <xs:documentation>The ENERGY STAR Score that is your target score.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="targetTypePercentage" type="targetTypePercentageType">
+                            <xs:annotation>
+                                <xs:documentation>The "% Better than the Median" that is your target.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+</xs:schema>

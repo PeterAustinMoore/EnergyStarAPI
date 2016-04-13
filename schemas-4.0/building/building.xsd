@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../response/response.xsd"/>
+	<xs:include schemaLocation="../common/address.xsd"/>
+	<xs:include schemaLocation="../property/property.xsd"/>
+
+	<xs:element name="building" type="propertyType"/>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="distributionCenter" type="distributionCenterType">
+		<xs:annotation>
+			<xs:documentation>Unrefrigerated Buildings that are used for the temporary storage and redistribution of goods, manufactured products, merchandise or raw materials. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="distributionCenterType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="weeklyOperatingHours" minOccurs="0"/>
+						<xs:element ref="numberOfWorkers" minOccurs="0"/>
+						<xs:element ref="numberOfWalkInRefrigerationUnits" minOccurs="0"/>
+						<xs:element ref="percentHeated" minOccurs="0"/>
+						<xs:element ref="percentCooled" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

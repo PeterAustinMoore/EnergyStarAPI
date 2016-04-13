@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:simpleType name="propertyUseNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="propertyUse">
+		<xs:annotation>
+			<xs:documentation>This is used to update property use name only.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="name" type="propertyUseNameType"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="mapping" type="mappingType"/>
+	<xs:complexType name="mappingType">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id of the account, property, or meter needed to reference a customer, property, or meter for a given external identifier from ABS 2.5.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+    <!-- Response -->
+    <xs:include schemaLocation="response/response.xsd"/>
+
+    <xs:include schemaLocation="property/property.xsd"/>
+    <xs:include schemaLocation="property/propertyMetrics.xsd"/>
+    <xs:include schemaLocation="property/propertyMetricsList.xsd"/>
+    <xs:include schemaLocation="property/energyPerformanceProject.xsd"/>
+    <xs:include schemaLocation="targetFinder/targetFinder.xsd"/>
+    <xs:include schemaLocation="building/building.xsd"/>
+    <xs:include schemaLocation="meter/meter.xsd"/>
+    <xs:include schemaLocation="meter/meterConsumptionData.xsd"/>
+    <xs:include schemaLocation="account/account.xsd"/>
+    <xs:include schemaLocation="account/customer.xsd"/>
+    <xs:include schemaLocation="common/customField.xsd"/>
+    <xs:include schemaLocation="account/dataExchangeSettings.xsd"/>
+    <xs:include schemaLocation="propertyUse/propertyUse.xsd"/>
+    <xs:include schemaLocation="propertyUse/propertyUseList.xsd"/>
+    <xs:include schemaLocation="propertyUse/useDetailsRevisions.xsd"/>
+    <xs:include schemaLocation="authorization/authorization.xsd"/>
+    <xs:include schemaLocation="association/association.xsd"/>
+    <xs:include schemaLocation="mapping/mapping.xsd"/>
+    <xs:include schemaLocation="property/additionalIdentifier.xsd"/>
+    <xs:include schemaLocation="property/baselineAndTarget.xsd"/>
+    <xs:include schemaLocation="assignment/edu.xsd"/>
+    <xs:include schemaLocation="assignment/pgp.xsd"/>
+
+</xs:schema>

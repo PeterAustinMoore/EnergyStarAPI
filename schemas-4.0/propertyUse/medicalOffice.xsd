@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="characteristics.xsd"/>
+	<xs:include schemaLocation="propertyUse.xsd"/>
+	<xs:element name="medicalOffice" type="medicalOfficeType">
+		<xs:annotation>
+			<xs:documentation>Medical Office Buildings used to provide diagnosis and treatment for medical, dental, or psychiatric outpatient care.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="medicalOfficeType">
+		<xs:all>
+			<xs:element name="name" type="propertyUseNameType"/>
+			<xs:element name="useDetails">
+				<xs:complexType>
+					<xs:all>
+						<xs:element ref="totalGrossFloorArea"/>
+						<xs:element ref="numberOfWorkers" minOccurs="0"/>
+						<xs:element ref="percentCooled" minOccurs="0"/>
+						<xs:element ref="percentHeated" minOccurs="0"/>
+						<xs:element ref="weeklyOperatingHours" minOccurs="0"/>
+						<xs:element ref="numberOfSurgicalOperatingBeds" minOccurs="0"/>
+						<xs:element ref="surgeryCenterFloorArea" minOccurs="0"/>
+						<xs:element ref="numberOfMriMachines" minOccurs="0"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

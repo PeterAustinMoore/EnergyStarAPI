@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+    <!--
+        INCLUDES
+    -->
+    <xs:include schemaLocation="../common/audit.xsd"/>
+    <xs:element name="energyPerformanceProject" type="energyPerformanceProjectType"/>
+    <xs:complexType name="energyPerformanceProjectType">
+        <xs:all>
+            <xs:element name="projectName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The name of the energy performance project.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="projectDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The description of the energy performance project.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="propertyId" type="xs:long" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The id to the corresponding property.  This field is ignore if provided on a PUT or POST.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="propertyName" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The name of the corresponding property.  This field is ignore if provided on a PUT or POST.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="80"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="implementationDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The date the project is going to be or was implemented.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="category" type="categoryType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Indicates the category or stage the project fits within.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="categoryOtherDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>If the category type is "Other," then an additional description is required.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="investmentCost" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The cost of the project (investment). </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="estimatedSavingsCost" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The estimated cost savings of the project. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="evaluationPeriod" type="evaluationPeriodType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Providing evaluation periods will allow Portfolio Manager to show you energy metrics before and after you implemented your project. By default, these periods are set to one month prior to and 13 months after your implementation date.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="audit" type="logType" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="evaluationPeriodType">
+        <xs:all>
+            <xs:element name="preImplementationDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The date the project is going to be or was implemented.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="postImplementationDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The date the project is going to be or was implemented.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:simpleType name="categoryType">
+        <xs:annotation>
+            <xs:documentation>List of categories or stages for the project.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Recommissioning (Stage 1)"/>
+            <xs:enumeration value="Lighting (Stage 2)"/>
+            <xs:enumeration value="Load Reductions (Stage 3)"/>
+            <xs:enumeration value="Fan Systems (Stage 4)"/>
+            <xs:enumeration value="Heating &amp; Cooling Plant (Stage 5)"/>
+            <xs:enumeration value="Behavioral/Outreach"/>
+            <xs:enumeration value="Other Technologies/Strategies"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

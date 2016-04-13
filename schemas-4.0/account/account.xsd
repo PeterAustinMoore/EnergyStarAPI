@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<!--
+        INCLUDES
+    -->
+	<xs:include schemaLocation="../common/address.xsd"/>
+	<xs:element name="account" type="accountType">
+		<xs:annotation>
+			<xs:documentation>Contains information for a Portfolio Manager account.
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="accountType">
+		<xs:all>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The ID to the account.  This is ignored if specified in a XML request.  This is provided by Portfolio Manager only in a XML response.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="username">
+				<xs:annotation>
+					<xs:documentation>Your username.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="password">
+				<xs:annotation>
+					<xs:documentation>Your password.  The password must be at least 8 characters in length and must contain 3 out of  4 of the following requirements: (i) uppercase characters, (ii) lowercase characters, (iii) base 10 digits (0 through 9), and (iv) nonalphanumeric characters: ~!@#$%^&amp;*_-+=`|\(){}[]:;"'&lt;&gt;,.?/</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="8"/>
+						<xs:maxLength value="120"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="securityAnswers" type="securityAnswersType">
+				<xs:annotation>
+					<xs:documentation>Security questions will NOT be returned on a GET call.  This is intentional for security purposes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="contact" type="contactType"/>
+			<xs:element name="organization" type="organizationType"/>
+			<xs:element name="webserviceUser" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Whether you will be using web services.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="searchable" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Whether you want people to be able to search for you.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="includeTestPropertiesInGraphics" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Indicates whether properties marked as “Test Properties” in the account will be included in the charts and graphs on My Portfolio page.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="contactType">
+		<xs:all>
+			<xs:element name="firstName">
+				<xs:annotation>
+					<xs:documentation>Your first name</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="lastName">
+				<xs:annotation>
+					<xs:documentation>Your last name</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="email">
+				<xs:annotation>
+					<xs:documentation>Your email address</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="address" type="addressType"/>
+			<xs:element name="jobTitle">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="phone">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="organizationType">
+		<xs:all>
+			<xs:element name="primaryBusiness" type="primaryBusinessType">
+				<xs:annotation>
+					<xs:documentation>Your primary business.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherBusinessDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Describes other if you chose other as your primary business.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="energyStarPartner" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Whether organization is an ENERGY STAR Partner.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="energyStarPartnerType" type="typeOfEnergyStarPartner" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Whether organization is an ENERGY STAR SPP Partner. Only required if the organization is an ENERGY STAR Partner. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="otherPartnerDescription" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Describes other if you chose other as your energy star partner.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+		</xs:all>
+		<xs:attribute name="name">
+			<xs:annotation>
+				<xs:documentation>Your Organization's name.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="1000"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="primaryBusinessType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Architecture/Design Firm"/>
+			<xs:enumeration value="Banking/Financial"/>
+			<xs:enumeration value="Commercial Real Estate"/>
+			<xs:enumeration value="Congregation/Faith-Based Organization"/>
+			<xs:enumeration value="Data Center"/>
+			<xs:enumeration value="Drinking Water Treatment/Distribution"/>
+			<xs:enumeration value="Education"/>
+			<xs:enumeration value="Energy Efficiency Program"/>
+			<xs:enumeration value="Entertainment/Recreation"/>
+			<xs:enumeration value="Food Service"/>
+			<xs:enumeration value="Government: Local (U.S.)"/>
+			<xs:enumeration value="Government: Outside U.S."/>
+			<xs:enumeration value="Government: State (U.S.)"/>
+			<xs:enumeration value="Government: Federal (U.S.)"/>
+			<xs:enumeration value="Healthcare"/>
+			<xs:enumeration value="Hospitality"/>
+			<xs:enumeration value="Legal Services"/>
+			<xs:enumeration value="Manufacturing/Industrial"/>
+			<xs:enumeration value="Media"/>
+			<xs:enumeration value="Multifamily Housing"/>
+			<xs:enumeration value="Retail"/>
+			<xs:enumeration value="Senior Care"/>
+			<xs:enumeration value="Service and Product Provider/Consultant"/>
+			<xs:enumeration value="Transportation"/>
+			<xs:enumeration value="Utility"/>
+			<xs:enumeration value="Wastewater Treatment"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="typeOfEnergyStarPartner">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Associations"/>
+			<xs:enumeration value="Organizations that Own/Manage/Lease Buildings and Plants"/>
+			<xs:enumeration value="Service and Product Providers"/>
+			<xs:enumeration value="Small Businesses"/>
+			<xs:enumeration value="Utilities and Energy Efficiency Program Sponsors"/>
+            <xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="securityAnswersType">
+		<xs:sequence>
+			<xs:element name="securityAnswer" minOccurs="0" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>For security purposes, 2 security questions have to be answered.
+                    </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="question" type="questionType"/>
+						<xs:element name="answer">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="questionType">
+		<xs:attribute name="id" use="required">
+			<xs:annotation>
+				<xs:documentation>The id # for one of your 2 security questions.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation>This denotes the list of security questions.</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:long">
+					<xs:enumeration value="-1">
+						<xs:annotation>
+							<xs:documentation>In what city did you meet your spouse/significant other?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-2">
+						<xs:annotation>
+							<xs:documentation>What street/road did you live on in third grade?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-3">
+						<xs:annotation>
+							<xs:documentation>What is the middle name of your youngest child?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-4">
+						<xs:annotation>
+							<xs:documentation>What is your oldest cousin's first and last name?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-5">
+						<xs:annotation>
+							<xs:documentation>In what city does your nearest sibling live?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-6">
+						<xs:annotation>
+							<xs:documentation>In what city/town was your first job?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-7">
+						<xs:annotation>
+							<xs:documentation>What was your favorite place to visit as a child?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-8">
+						<xs:annotation>
+							<xs:documentation>What was your high school mascot?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-9">
+						<xs:annotation>
+							<xs:documentation>What is the name of the high school you attended?
+                            </xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-10">
+						<xs:annotation>
+							<xs:documentation>What is your preferred musical genre?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-11">
+						<xs:annotation>
+							<xs:documentation>What is your birth city?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-12">
+						<xs:annotation>
+							<xs:documentation>What is your favorite sports team?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-13">
+						<xs:annotation>
+							<xs:documentation>What is your favorite restaurant?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-14">
+						<xs:annotation>
+							<xs:documentation>What is the name of your pet?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-15">
+						<xs:annotation>
+							<xs:documentation>What is your favorite hobby?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-16">
+						<xs:annotation>
+							<xs:documentation>What is your favorite musical group?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-17">
+						<xs:annotation>
+							<xs:documentation>What was the make of your first car?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="-18">
+						<xs:annotation>
+							<xs:documentation>What is your favorite movie?</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="text" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The text of the security question.  In a GET request, this will indicate the text of the security question.  This is  element is ignored in a PUT or POST request.                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="propertyMetrics" type="propertyMetricsType">
+		<xs:annotation>
+			<xs:documentation>All metrics reflect the 12 months ending on the given month and year.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="propertyMetricsType">
+		<xs:sequence>
+			<xs:element name="metric" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="value" type="xs:string" nillable="true">
+							<xs:annotation>
+								<xs:documentation>The value of the metric.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:all>
+					<xs:attribute name="name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>The name of the metric.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="uom" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>The unit of measure of the metric.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="dataType" type="dataType">
+						<xs:annotation>
+							<xs:documentation>The data type of the value for the metric (i.e., string, numeric, date).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="year" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>The year of the period ending date for the set of metrics.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="month">
+			<xs:annotation>
+				<xs:documentation>The month of the period ending date for the set of metrics.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="12"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="propertyId" type="xs:long">
+			<xs:annotation>
+				<xs:documentation>The id of the property.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="dataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="date"/>
+			<xs:enumeration value="numeric"/>
+			<xs:enumeration value="string"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

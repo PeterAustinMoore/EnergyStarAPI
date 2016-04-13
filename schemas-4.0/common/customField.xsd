@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="customField">
+		<xs:annotation>
+			<xs:documentation>Additional field (outside of Portfolio Manager) that you can prompt a user to provide data through the connection/share process.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="minChars" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The minimum number of characters allowed for input.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="maxChars" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The maximum number of characters allowed for input.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The description of the custom field that is displayed.</xs:documentation>
+					</xs:annotation>
+								<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="4000"/>
+				</xs:restriction>
+			</xs:simpleType>	
+				</xs:element>
+				<xs:element name="example"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Example of input.</xs:documentation>
+					</xs:annotation>
+								<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>	
+				</xs:element>
+				<xs:element name="url" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The URL of a web page with more information about this field.</xs:documentation>
+					</xs:annotation>
+								<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="1000"/>
+				</xs:restriction>
+			</xs:simpleType>	
+				</xs:element>
+				<xs:element name="displayOrder" type="xs:int" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The display order if multiple custom fields have been created.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+			<xs:attribute name="name" use="required">
+				<xs:annotation>
+					<xs:documentation>The custom field name which will display to the PM user.</xs:documentation>
+				</xs:annotation>
+							<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>	
+			</xs:attribute>
+			<xs:attribute name="required" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Whether the field is required or not.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="validCharacters" use="required">
+				<xs:annotation>
+					<xs:documentation>The set of valid characters allowed for input.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Any">
+							<xs:annotation>
+								<xs:documentation>Any character allowed</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Alphanumeric">
+							<xs:annotation>
+								<xs:documentation>Alphanumeric Characters only</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Numeric">
+							<xs:annotation>
+								<xs:documentation>Numeric Characters only</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="whenToPrompt" use="required">
+				<xs:annotation>
+					<xs:documentation>When the custom field should be prompted to the user (i.e., every account, every property, or every meter).</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Once">
+							<xs:annotation>
+								<xs:documentation>Just ask once and apply it to every transaction</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Property">
+							<xs:annotation>
+								<xs:documentation>Ask for every property</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Meter">
+							<xs:annotation>
+								<xs:documentation>Ask for every meter</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="customFieldList">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="customField">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="name" type="xs:string"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

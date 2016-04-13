@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="../common/audit.xsd"/>
+    <xs:include schemaLocation="../authorization/authorization.xsd"/>
+
+	<xs:element name="meter" type="meterType"/>
+	<xs:complexType name="meterType">
+		<xs:annotation>
+			<xs:documentation>A service type used for representing a meter</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="id" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The id of the meter.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="typeOfMeter">
+				<xs:annotation>
+					<xs:documentation>The type of meter (i.e. electric, natural gas, PDU, Indoor, etc.). </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name">
+				<xs:annotation>
+					<xs:documentation>The name of the meter.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="metered" type="xs:boolean" default="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates if the meter is set up to be metered monthly or for bulk delivery.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitOfMeasure">
+				<xs:annotation>
+					<xs:documentation>The units that measure the energy for the meter (Kbtu, KWh, Mbtu, MWh, ccf, gallons, etc.).</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ccf (hundred cubic feet)"/>
+						<xs:enumeration value="cf (cubic feet)"/>
+                        <xs:enumeration value="Cubic Meters per Day"/>
+						<xs:enumeration value="cm (Cubic meters)"/>
+						<xs:enumeration value="Cords"/>
+						<xs:enumeration value="Gallons (UK)"/>
+						<xs:enumeration value="Gallons (US)"/>
+						<xs:enumeration value="GJ"/>
+						<xs:enumeration value="kBtu (thousand Btu)"/>
+						<xs:enumeration value="kcf (thousand cubic feet)"/>
+						<xs:enumeration value="Kcm (Thousand Cubic meters)"/>
+						<xs:enumeration value="KGal (thousand gallons) (UK)"/>
+						<xs:enumeration value="KGal (thousand gallons) (US)"/>
+						<xs:enumeration value="Kilogram"/>
+						<xs:enumeration value="KLbs. (thousand pounds)"/>
+						<xs:enumeration value="kWh (thousand Watt-hours)"/>
+						<xs:enumeration value="Liters"/>
+						<xs:enumeration value="MBtu (million Btu)"/>
+						<xs:enumeration value="MCF(million cubic feet)"/>
+						<xs:enumeration value="mg/l (milligrams per liter)"/>
+						<xs:enumeration value="MGal (million gallons) (UK)"/>
+						<xs:enumeration value="MGal (million gallons) (US)"/>
+						<xs:enumeration value="Million Gallons per Day"/>
+						<xs:enumeration value="MLbs. (million pounds)"/>
+						<xs:enumeration value="MWh (million Watt-hours)"/>
+						<xs:enumeration value="pounds"/>
+						<xs:enumeration value="Pounds per year"/>
+						<xs:enumeration value="therms"/>
+						<xs:enumeration value="ton hours"/>
+						<xs:enumeration value="Tonnes (metric)"/>
+						<xs:enumeration value="tons"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="firstBillDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>The date of the first bill.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inUse" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Is this meter in use?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inactiveDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If the meter is no longer in use, this is the date that it went inactive.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherDescription"  minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If the type of meter is "Other," this is the description of the meter's energy type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+            <xs:element name="accessLevel" type="shareLevelType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Current share level for the user calling the webservice.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="audit" type="logType" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="typeOfMeter">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Coal Anthracite"/>
+			<xs:enumeration value="Coal Bituminous"/>
+			<xs:enumeration value="Coke"/>
+			<xs:enumeration value="Diesel"/>
+			<xs:enumeration value="District Chilled Water - Absorption Chiller using Natural Gas"/>
+			<xs:enumeration value="District Chilled Water - Electric-Driven Chiller"/>
+			<xs:enumeration value="District Chilled Water - Engine-Driven Chiller using Natural Gas"/>
+			<xs:enumeration value="District Chilled Water - Other"/>
+			<xs:enumeration value="District Hot Water"/>
+			<xs:enumeration value="District Steam"/>
+			<xs:enumeration value="Electric"/>
+			<xs:enumeration value="Electric on Site Solar"/>
+			<xs:enumeration value="Electric on Site Wind"/>
+			<xs:enumeration value="Fuel Oil No 1"/>
+			<xs:enumeration value="Fuel Oil No 2"/>
+			<xs:enumeration value="Fuel Oil No 4"/>
+			<xs:enumeration value="Fuel Oil No 5 or 6"/>
+			<xs:enumeration value="Kerosene"/>
+			<xs:enumeration value="Liquid Propane"/>
+			<xs:enumeration value="Natural Gas"/>
+			<xs:enumeration value="Other (Energy)"/>
+			<xs:enumeration value="Propane"/>
+			<xs:enumeration value="Wood"/>
+			<xs:enumeration value="IT Equipment Input Energy (meters on each piece of equipment)"/>
+			<xs:enumeration value="Power Distribution Unit (PDU) Input Energy"/>
+			<xs:enumeration value="Power Distribution Unit (PDU) Output Energy"/>
+			<xs:enumeration value="Uninterruptible Power Supply (UPS) Output Energy"/>
+			<xs:enumeration value="Alternative Water Generated On-Site - All"/>
+			<xs:enumeration value="Alternative Water Generated On-Site - Indoor"/>
+			<xs:enumeration value="Alternative Water Generated On-Site - Outdoor"/>
+			<xs:enumeration value="Municipally Supplied Potable Water - All"/>
+			<xs:enumeration value="Municipally Supplied Potable Water - Indoor"/>
+			<xs:enumeration value="Municipally Supplied Potable Water - Outdoor"/>
+			<xs:enumeration value="Municipally Supplied Reclaimed Water - All"/>
+			<xs:enumeration value="Municipally Supplied Reclaimed Water - Indoor"/>
+			<xs:enumeration value="Municipally Supplied Reclaimed Water - Outdoor"/>
+			<xs:enumeration value="Other - All (Water)"/>
+			<xs:enumeration value="Other - Outdoor"/>
+			<xs:enumeration value="Other - Indoor"/>
+			<xs:enumeration value="Average Influent Flow"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

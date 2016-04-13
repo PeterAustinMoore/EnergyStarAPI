@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:include schemaLocation="../common/address.xsd"/>
+	<xs:include schemaLocation="../meter/meter.xsd"/>
+	<xs:element name="dataExchangeSettings">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="supportedMeterTypes" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The list of meter types that you support.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="meterType" type="typeOfMeter" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="termsOfUse" minOccurs="0">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="none" type="emptyType">
+								<xs:annotation>
+									<xs:documentation>You do not have any Terms of Use to provide.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="text" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>The text that you want to use for your Terms of Use.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="url" type="xs:anyURI">
+								<xs:annotation>
+									<xs:documentation>The URL that customers can reference for the Terms of Use.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="emptyType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

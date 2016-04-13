@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+	<xs:element name="eduList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="edu" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="edu">
+		<xs:annotation>
+			<xs:documentation>Electric Distribution Utility Information</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>The id to the Electric Distribution Utility (EDU) </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The name of Electric Distribution Utility (EDU).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="preferred" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>This is the default EDU for a property if there are multiple EDU options.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="selected" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>Whether the property is currently assigned to this EDU.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="eGridCode" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The code of the eGrid Subregion that the EDU belongs to.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="eGridName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>The name of the eGrid Subregion that the EDU belongs to.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

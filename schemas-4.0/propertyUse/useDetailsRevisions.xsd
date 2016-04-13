@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+    <!--
+        INCLUDES
+    -->
+    <xs:include schemaLocation="characteristics.xsd"/>
+    <xs:include schemaLocation="../common/links.xsd"/>
+
+    <xs:element name="useDetails">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="useDetailsRevision" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="links" type="linksType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="useDetailsRevision">
+        <xs:choice>
+            <xs:element ref="amountOfLaundryProcessedAnnually"/>
+            <xs:element ref="averageEffluentBiologicalOxygenDemand"/>
+            <xs:element ref="averageInfluentBiologicalOxygenDemand"/>
+            <xs:element ref="averageNumberOfResidents"/>
+            <xs:element ref="completelyEnclosedFootage"/>
+            <xs:element ref="cookingFacilities"/>
+            <xs:element ref="coolingEquipmentRedundancy"/>
+            <xs:element ref="enclosedFloorArea"/>
+            <xs:element ref="enrollment"/>
+            <xs:element ref="exteriorEntranceToThePublic"/>
+            <xs:element ref="fixedFilmTrickleFiltrationProcess"/>
+            <xs:element ref="fullServiceSpaFloorArea"/>
+            <xs:element ref="areaOfAllWalkInRefrigerationUnits"/>
+            <xs:element ref="lengthOfAllOpenClosedRefrigerationUnits"/>
+            <xs:element ref="governmentSubsidizedHousing"/>
+            <xs:element ref="grantDollars"/>
+            <xs:element ref="gymCenterFloorArea"/>
+            <xs:element ref="gymnasiumFloorArea"/>
+            <xs:element ref="hasComputerLab"/>
+            <xs:element ref="hasDiningHall"/>
+            <xs:element ref="hasLaboratory"/>
+            <xs:element ref="hoursPerDayGuestsOnsite"/>
+            <xs:element ref="iceEvents"/>
+            <xs:element ref="isHighSchool"/>
+            <xs:element ref="isTertiaryCare"/>
+            <xs:element ref="itEnergyMeterConfiguration"/>
+            <xs:element ref="laundryFacility"/>
+            <xs:element ref="maximumNumberOfFloors"/>
+            <xs:element ref="maximumResidentCapacity"/>
+            <xs:element ref="licensedBedCapacity"/>
+            <xs:element ref="monthsInUse"/>
+            <xs:element ref="numberOfBedrooms"/>
+            <xs:element ref="numberOfCashRegisters"/>
+            <xs:element ref="numberOfCommercialRefrigerationUnits"/>
+            <xs:element ref="numberOfCommercialWashingMachines"/>
+            <xs:element ref="numberOfComputers"/>
+            <xs:element ref="numberOfConcertShowEventsPerYear"/>
+            <xs:element ref="numberOfResidentialLivingUnitsLowRiseSetting"/>
+            <xs:element ref="numberOfFTEWorkers"/>
+            <xs:element ref="numberOfGuestMealsServedPerYear"/>
+            <xs:element ref="numberOfLaundryHookupsInAllUnits"/>
+            <xs:element ref="numberOfLaundryHookupsInCommonArea"/>
+            <xs:element ref="numberOfMriMachines"/>
+            <xs:element ref="numberOfOpenClosedRefrigerationUnits"/>
+            <xs:element ref="numberOfPeople"/>
+            <xs:element ref="numberOfResidentialLiftSystems"/>
+            <xs:element ref="numberOfResidentialLivingUnits"/>
+            <xs:element ref="numberOfResidentialWashingMachines"/>
+            <xs:element ref="numberOfRooms"/>
+            <xs:element ref="numberOfHotelRooms"/>
+            <xs:element ref="numberOfSpecialOtherEventsPerYear"/>
+            <xs:element ref="numberOfSportingEventsPerYear"/>
+            <xs:element ref="numberOfStaffedBeds"/>
+            <xs:element ref="numberOfSurgicalOperatingBeds"/>
+            <xs:element ref="numberOfWalkInRefrigerationUnits"/>
+            <xs:element ref="numberOfWeekdaysOpen"/>
+            <xs:element ref="numberOfWorkers"/>
+            <xs:element ref="nutrientRemoval"/>
+            <xs:element ref="onSiteLaundryFacility"/>
+            <xs:element ref="openFootage"/>
+            <xs:element ref="openOnWeekends"/>
+            <xs:element ref="ownedBy"/>
+            <xs:element ref="partiallyEnclosedFootage"/>
+            <xs:element ref="percentCooled"/>
+            <xs:element ref="percentHeated"/>
+            <xs:element ref="numberOfResidentialLivingUnitsMidRiseSetting"/>
+            <xs:element ref="percentOfGrossFloorAreaThatIsCommonSpaceOnly"/>
+            <xs:element ref="percentOfficeCooled"/>
+            <xs:element ref="percentOfficeHeated"/>
+            <xs:element ref="plantDesignFlowRate"/>
+            <xs:element ref="poolLocation"/>
+            <xs:element ref="poolSize"/>
+            <xs:element ref="numberOfResidentialLivingUnitsHighRiseSetting"/>
+            <xs:element ref="residentPopulation"/>
+            <xs:element ref="schoolDistrict"/>
+            <xs:element ref="seatingCapacity"/>
+            <xs:element ref="singleStore"/>
+            <xs:element ref="totalGrossFloorArea"/>
+            <xs:element ref="upsSystemRedundancy"/>
+            <xs:element ref="sizeOfElectronicScoreBoards"/>
+            <xs:element ref="supplementalHeating"/>
+            <xs:element ref="studentSeatingCapacity"/>
+            <xs:element ref="surgeryCenterFloorArea"/>
+            <xs:element ref="weeklyOperatingHours"/>
+        </xs:choice>
+    </xs:group>
+
+</xs:schema>

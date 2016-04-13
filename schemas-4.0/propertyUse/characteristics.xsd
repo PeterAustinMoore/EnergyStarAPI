@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="4.0">
+
+    <xs:include schemaLocation="characteristicType.xsd"/>
+	<xs:include schemaLocation="../common/grossFloorArea.xsd"/>
+
+    <xs:element name="amountOfLaundryProcessedAnnually" type="amountOfLaundryProcessedAnnuallyType">
+		<xs:annotation>
+			<xs:documentation>Quantity of laundry processed at the property.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="averageEffluentBiologicalOxygenDemand" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The concentration of effluent Biological Oxygen Demand (BOD5) at a wastewater treatment plant. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="averageInfluentBiologicalOxygenDemand" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The concentration of influent Biological Oxygen Demand (BOD5) at a wastewater treatment plant. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="averageNumberOfResidents" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Annual average number of residents at the property. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="completelyEnclosedFootage" type="grossFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Area of parking garage that is completely enclosed.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cookingFacilities" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether there are Cooking Facilities.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="coolingEquipmentRedundancy" type="coolingEquipmentRedundancyType">
+		<xs:annotation>
+			<xs:documentation>Level of redundancy for the cooling equipment in a Data Center.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="exteriorEntranceToThePublic" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether there is an Exterior Entrance to the Public. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fixedFilmTrickleFiltrationProcess" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether there is a Fixed Film Trickle Filtration Process. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fullServiceSpaFloorArea" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Floor area associated with a Full Service Spa. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="areaOfAllWalkInRefrigerationUnits" type="optionalFloorAreaType">
+        <xs:annotation>
+            <xs:documentation>Area of all walk-in refrigeration/freezer units - include only commercial type units that a person actually walks into to retrieve goods.  See numberOfWalkInRefrigerationUnits for more information.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="lengthOfAllOpenClosedRefrigerationUnits" type="lengthOfAllOpenClosedRefrigerationUnitsType">
+        <xs:annotation>
+            <xs:documentation>Length of all open or closed Refrigeration or Freezer cases that are used for the sale or storage of perishable goods. Include display-type refrigerated open or closed cases and cabinets, as well as display-type freezer units. These are typically found on the sales floor.   See numberOfOpenClosedRefrigerationUnits for more information.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:element name="enclosedFloorArea" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Total enclosed floor area at a Stadium/Arena.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="governmentSubsidizedHousing" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether this is housing that is subsidized by the local, state, or Federal government. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="gymCenterFloorArea" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Floor area associated with a Gym/Fitness Center. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hasComputerLab" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether there is a Computer Lab.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hasDiningHall" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Whether there is a Dining Hall. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hasLaboratory" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of a laboratory (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="hoursPerDayGuestsOnsite" type="hoursPerDayGuestsOnsiteType">
+		<xs:annotation>
+			<xs:documentation>Number of hours per day a typical guest spends at the property (Less Than 15, 15 To 19, More Than 20)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isHighSchool" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of a High School, as indicated by education of grades 10, 11, and/or 12 (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isTertiaryCare" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of tertiary medical care, specialized care beyond a typical secondary level, such as Level 1 trauma centers, organ transplant, or prenatal intensive care units (Yes/No).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="iceEvents" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Are there ice-related events such as Hockey, Skating, Ice Capades?</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfConcertShowEventsPerYear" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Number of concert/show events per year. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfSpecialOtherEventsPerYear" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Number of special/other events per year at a stadium/arena (i.e. events that are neither concerts/shows nor athletic events). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfSportingEventsPerYear" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Number of sporting/athletic events per year. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfSurgicalOperatingBeds" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of beds associated with surgical operation at a medial office/outpatient healthcare facility.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sizeOfElectronicScoreBoards" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>The total size of electronic score boards at a stadium/arena.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="surgeryCenterFloorArea" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>The area within a medical office or outpatient healthcare property devoted to surgery. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="itEnergyMeterConfiguration" type="itEnergyConfigurationType">
+		<xs:annotation>
+			<xs:documentation>The IT Energy Configuration/location of IT Energy meters at a data center.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="laundryFacility" type="onsiteLaundryType">
+		<xs:annotation>
+			<xs:documentation>Type of laundry processed at the property (linens, Terry, Linens &amp; Terry) </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="maximumNumberOfFloors" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Maximum number of floors in the tallest building at the property. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="maximumResidentCapacity" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Maximum capacity of residents, based on the design of the facility. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="licensedBedCapacity" type="useDecimalType">
+        <xs:annotation>
+            <xs:documentation>Licensed Bed Capacity is the total number of beds that your hospital is licensed to have in operation. This may be more than your Staffed Beds, which are those that are set up and ready for use. </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:element name="monthsInUse" type="monthsInUseType">
+		<xs:annotation>
+			<xs:documentation>Number of months per year the property is in use. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfBedrooms" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of bedrooms. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfCashRegisters" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of cash registers. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfCommercialRefrigerationUnits" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of Commercial Refrigeration/Freezer cases, including any open or closed commercial type case, and including any walk-in units. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfCommercialWashingMachines" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of commercial-type washing machines.  (This does not include residential or coin-operated machines)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfComputers" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of computers and servers at the property. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialLivingUnitsLowRiseSetting" type="useDecimalType">
+        <xs:annotation>
+            <xs:documentation>Number of units located in individual buildings that are 1 to 4 stories in height, as well as units located wings/portions of larger buildings that fall in this height range (e.g. if Wing A is 6 stories and Wing B is 3 stories, only units in Wing B would be counted here).</xs:documentation>
+        </xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfFTEWorkers" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of full-time equivalent workers (total number of hours worked by all workers, divided by the standard hours in a full time shift). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfGuestMealsServedPerYear" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Total number of guest meals (also called meal covers) served each year. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfLaundryHookupsInAllUnits" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>The total number of laundry hookups in all individual living units (counting hookups, whether or not there is a machine).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfLaundryHookupsInCommonArea" type="useIntegerType">
+        <xs:annotation>
+            <xs:documentation>The total number of laundry hookups in all common areas (counting hookups, whether or not there is a machine).</xs:documentation>
+        </xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfMriMachines" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of MRI Machines. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfOpenClosedRefrigerationUnits" type="useDecimalType">
+        <xs:annotation>
+            <xs:documentation>
+                The Number of Open or Closed Refrigeration/Freezer Units is the count of open or closed cases that are used for the sale or storage of perishable goods. This includes display-type refrigerated open or closed cases and cabinets as well as display-type freezer units typically found on a sales floor. Each case or cabinet section, typically 4 to 12 feet in length, should be considered 1 unit. Include those cases located inside and immediately adjacent to the building. These units may be portable or permanent, and may have doors, plastic strips, or other flexible cover. This count should not include vending machines. If your property is in the design phase, use your best estimate for the intended conditions when the property is fully operational.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:element name="numberOfPeople" type="useIntegerType">
+		<xs:annotation>
+			<xs:documentation>Number of people living in the home.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialLiftSystems" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of residential electronic lift systems. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialLivingUnits" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Total number of residential living units (apartments or condominiums) at the property. This value must equal the sum of the number of residential living units in a low-rise setting, mid-rise setting, and high-rise setting.  A 0.9 tolerance is allowed.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialWashingMachines" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of residential-type washing machines. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfRooms" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Total number of rooms for a lodging type of property (hotel, dormitory, etc). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+    <xs:element name="numberOfHotelRooms" type="useDecimalType">
+        <xs:annotation>
+            <xs:documentation>Total number of rooms for a lodging type of property (hotel). </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:element name="numberOfStaffedBeds" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of beds set up and staffed for use at a hospital.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfWalkInRefrigerationUnits" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of walk-in refrigeration/freezer units - including only those commercial type units that you can completely enter to retrieve goods. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfWeekdaysOpen" type="numberOfWeekdaysType">
+		<xs:annotation>
+			<xs:documentation>Number of weekdays (Monday through Friday) the property is open.  This will be an number between 0 and 5. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfWorkers" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The total number of workers during the primary (largest shift) - this is only a total number of people in the building at a single time.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="gymnasiumFloorArea" type="optionalFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Floor area associated with a gymnasium at a K12 School. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="studentSeatingCapacity" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The number of students the school can accommodate (including portable classrooms). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="nutrientRemoval" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of a nutrient removal system at a wastewater treatment plant (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="onSiteLaundryFacility" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of an on-site Laundry Facility (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="openFootage" type="grossFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Total area of open parking lots/areas.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="openOnWeekends" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Indication of regular activities that occur on either Saturday or Sunday (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ownedBy" type="ownedByType">
+		<xs:annotation>
+			<xs:documentation>Indication of whether the property is owned by a private, not-for profit, or government organization. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="partiallyEnclosedFootage" type="grossFloorAreaType">
+		<xs:annotation>
+			<xs:documentation>Total area of all parking structures that are only partially enclosed (i.e. multi-level structures that only have partial walls). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="percentCooled" type="percentCooledType">
+		<xs:annotation>
+			<xs:documentation>The percent of the property that can be cooled by mechanical cooling equipment. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="percentHeated" type="percentHeatedType">
+		<xs:annotation>
+			<xs:documentation>The percent of the property that can be heated by mechanical heating equipment. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialLivingUnitsMidRiseSetting" type="useDecimalType">
+        <xs:annotation>
+            <xs:documentation>Number of units located in individual buildings that are 5 to 9 stories in height, as well as units located wings/portions of larger buildings that fall in this height range (e.g. if Wing A is 6 stories and Wing B is 3 stories, only units in Wing A would be counted here).</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	<xs:element name="percentOfGrossFloorAreaThatIsCommonSpaceOnly" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The percent of the Gross Floor Area that is common space (not individual tenant areas)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="percentOfficeCooled" type="percentOfficeCooledType"/>
+	<xs:element name="percentOfficeHeated" type="percentOfficeHeatedType"/>
+	<xs:element name="plantDesignFlowRate" type="PlantDesignFlowRateType">
+		<xs:annotation>
+			<xs:documentation>The designed flow rate of a wastewater treatment plant (e.g. the capacity of the plant) in million gallons per day (MGD). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="poolLocation" type="poolType">
+		<xs:annotation>
+			<xs:documentation>Indication of whether a pool is indoor or outdoor. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="poolSize" type="poolSizeType">
+		<xs:annotation>
+			<xs:documentation>Approximate size of a swimming pool (Short Course, Recreational, Olympic).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="numberOfResidentialLivingUnitsHighRiseSetting" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>Number of units located in individual buildings that are 10 or more stories in height, as well as units located in wings/portions of buildings that fall in this range (e.g. if Wing A is 10 stories and Wing B is 5 stories, only units in Wing A would be counted here).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="residentPopulation" type="residentPopulationType">
+		<xs:annotation>
+			<xs:documentation>An indication of the type of residents living at the property, if applicable (e.g. student, military, senior, etc). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="schoolDistrict" type="useStringType">
+		<xs:annotation>
+			<xs:documentation>The school district in which the school is located. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="seatingCapacity" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The seating capacity associated with the main areas of worship in a worship facility. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="singleStore" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Indication that a Retail Store is a single store (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="totalGrossFloorArea" type="grossFloorAreaType"/>
+	<xs:element name="upsSystemRedundancy" type="upsSystemRedundancyType">
+		<xs:annotation>
+			<xs:documentation>Level of redundancy for the Uninterruptible Power Supply (UPS) system in a Data Center.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="supplementalHeating" type="useYesNoType">
+		<xs:annotation>
+			<xs:documentation>Presence of supplemental heating systems in a parking garage (Yes/No). </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="weeklyOperatingHours" type="useDecimalType">
+		<xs:annotation>
+			<xs:documentation>The total number of hours per week that the property is occupied by the majority of the employees.  It does not include hours when the property is occupied only by maintenance, security, or other support personnel.  </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="enrollment" type="useDecimalType"/>
+	<xs:element name="grantDollars" type="useDecimalType"/>
+</xs:schema>
