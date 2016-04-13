@@ -14,8 +14,8 @@ The connector has two major classes:
 Both are initiated in a similar fashion:
 
 <code>
->>> from EnergyStarAPI import Energy_Star_Test_Client, Energy_Star_Client
->>> ES_test_client = Energy_Star_Test_Client(username='myportfoliousername', password='mypassword')
+from EnergyStarAPI import Energy_Star_Test_Client, Energy_Star_Client
+ES_test_client = Energy_Star_Test_Client(username='myportfoliousername', password='mypassword')
 </code>
 
 _note:_ for testing, you must create a new account using
