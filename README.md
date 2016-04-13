@@ -6,7 +6,7 @@ Created on 4/13/2016
 Author Peter Moore
 
 ##Getting Started
-The connector has two major classes:
+The connector has two major classes:\n
 1. Energy_Star_Test_Client
 2. Energy_Star_Cleint
 
@@ -21,7 +21,7 @@ _note:_ for testing, you must create a new account using
 		ES_test_client.create_account(new_account)
 
 	Once this is successfully created, use the new credentials as the authentication
-	
+
 	new_test_client = Energy_Star_Test_Client(
 		username='new_account_Username',
 		password='new_account_password'
