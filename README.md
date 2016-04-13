@@ -17,6 +17,7 @@ Both are initiated in a similar fashion:
 	ES_test_client = Energy_Star_Test_Client(username='myportfoliousername', password='mypassword')
 
 _note:_ for testing, you must create a new account using
+	
 	with open('xml-templates/account.xml','rb') as new_account:
 		ES_test_client.create_account(new_account)
 
