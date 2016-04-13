@@ -6,7 +6,8 @@ Created on 4/13/2016
 Author Peter Moore
 
 ##Getting Started
-The connector has two major classes:\n
+The connector has two major classes:
+
 1. Energy_Star_Test_Client
 2. Energy_Star_Cleint
 
