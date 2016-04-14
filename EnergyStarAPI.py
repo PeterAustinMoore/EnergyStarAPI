@@ -12,13 +12,13 @@ class Energy_Star_Test_Client(object):
 	def __init__(self,username=None,password=None):
 		if username == None or password == None:
 			raise Exception("Username and Password required")
-
+		self.domain = "https://portfoliomanager.energystar.gov/wstest"
 		self.username = username
 		self.password = password
 		
 	def create_account(self,account_file):
 		if hasattr(account_file,"read"):
-			resource = 'https://portfoliomanager.energystar.gov/wstest/account'
+			resource = self.domain + '/account'
 			account_info = account_file.read()
 			headers = {}
 			headers['Content-Type'] = 'application/xml'
@@ -29,9 +29,15 @@ class Energy_Star_Test_Client(object):
 			if response.status_code != 200:
 				return _raise_for_status(response)
 			return response
-	def get_account(self):
-		resource = "https://portfoliomanager.energystar.gov/wstest/account"
-		
+	
+	def get_account_info(self):
+		resource = self.domain + "/account"
+
+		response = requests.get(resource, auth=(self.username, self.password))
+		if response.status_code != 200:
+			return _raise_for_status(response)
+		return response.text
+
 	def get_meter_list(self, prop_id):
 		resource = 'https://portfoliomanager.energystar.gov/wstest/property/%s/meter/list' % str(prop_id)
 		response = requests.get(resource, headers=self.get_headers())
@@ -40,32 +46,21 @@ class Energy_Star_Test_Client(object):
 			return _raise_for_status(response)
 		return response  
 
-class Energy_Star_Test_Client(object):
+class Energy_Star_Client(object):
 	def __init__(self,username=None,password=None):
 		if username == None or password == None:
 			raise Exception("Username and Password required")
-
+		self.domain = "https://portfoliomanager.energystar.gov/ws"
 		self.username = username
 		self.password = password
-	def get_account(self):
-		resource = "https://portfoliomanager.energystar.gov/wstest/account"
+
+	def get_account_info(self):
+		resource = self.domain+"/account"
+		response = requests.get(resource)
 		
-	def create_account(self,account_file):
-		if hasattr(account_file,"read"):
-			resource = 'https://portfoliomanager.energystar.gov/wstest/account'
-			account_info = account_file.read()
-			headers = {}
-			headers['Content-Type'] = 'application/xml'
-			acct = str(account_info)
-			print(acct)
-			response = requests.post(resource,data=acct,headers=headers)
-			print response.text
-			if response.status_code != 200:
-				return _raise_for_status(response)
-			return response
 
 	def get_meter_list(self, prop_id):
-		#resource = 'https://portfoliomanager.energystar.gov/wstest/property/%s/meter/list' % str(prop_id)
+		resource = self.domain + '/property/%s/meter/list' % str(prop_id)
 		
 		response = requests.get(resource, headers=self.get_headers())
 
