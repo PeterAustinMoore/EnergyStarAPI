@@ -7,6 +7,9 @@
 import requests
 import json
 from base64 import b64encode
+import datetime
+import time
+import xml.etree.ElementTree as ET
 
 class Energy_Star_Test_Client(object):
 	def __init__(self,username=None,password=None):
@@ -28,7 +31,7 @@ class Energy_Star_Test_Client(object):
 			print response.text
 			if response.status_code != 200:
 				return _raise_for_status(response)
-			return response
+			return response.text
 	
 	def get_account_info(self):
 		resource = self.domain + "/account"
@@ -56,20 +59,159 @@ class Energy_Star_Client(object):
 
 	def get_account_info(self):
 		resource = self.domain+"/account"
-		response = requests.get(resource)
-		
+		response = requests.get(resource, auth=(self.username,self.password))
+
+		if response.status_code != 200:
+			return _raise_for_status(response)
+		return response.text
 
 	def get_meter_list(self, prop_id):
 		resource = self.domain + '/property/%s/meter/list' % str(prop_id)
-		
 		response = requests.get(resource, headers=self.get_headers())
 
 		if response.status_code != 200:
 			return _raise_for_status(response)
-		return response
+		return response.text
+
+	def get_building_info(self,prop_id):
+		resource = self.domain + '/building/%s' % str(prop_id)
+		response = requests.get(resource, auth=(self.username,self.password))
+
+		if response.status_code != 200:
+			return _raise_for_status(response)
+		return response.text
+	
+	def get_usage_data(self,meter_id, months_ago):
+		# Get date in YYYY-MM-DD format from months ago
+		date_format = '%Y-%m-%d'
+		today = datetime.datetime.now()
+		start_date = today - datetime.timedelta(days=months_ago*30)
+		start_date = datetime.datetime.strftime(start_date, date_format)
+		resource = self.domain + '/meter/%s/consumptionData' % str(meter_id)
+
+		usage = []
+
+		url = resource + '?page=1&startDate=' + start_date
+		page = 1
+		while url:
+			print(url)
+			print("Getting data from page "+str(page))
+			page += 1
+
+			response = requests.get(url, auth=(self.username, self.password))
+
+			if response.status_code != 200:
+				print response.status_code, response.reason
+				break
+			#Set URL to none to stop loop if no more links
+			url = None
+
+			data = response.text
+			root = ET.fromstring(data)
+			for element in root.findall("meterConsumption"):
+				month_data = dict()
+				#Get the usage data
+				month_data[element.find("endDate").text] = float(element.find("usage").text)
+				usage.append(month_data)
+
+				# Get the next URL
+			for elements in root.find("links"):
+				for link in element.findall("link"):
+					if link.get("linkDescription") == "next page":
+						url = self.domain + link.get("link")
+		#Return the usage for the time period
+		return usage
+
+	def get_cost_data(self,meter_id, months_ago):
+		# Get date in YYYY-MM-DD format from months ago
+		date_format = '%Y-%m-%d'
+		today = datetime.datetime.now()
+		start_date = today - datetime.timedelta(days=months_ago*30)
+		start_date = datetime.datetime.strftime(start_date, date_format)
+		resource = self.domain + '/meter/%s/consumptionData' % str(meter_id)
+
+		cost = []
+
+		url = resource + '?page=1&startDate=' + start_date
+		page = 1
+		while url:
+			print(url)
+			print("Getting data from page "+str(page))
+			page += 1
+
+			response = requests.get(url, auth=(self.username, self.password))
+
+			if response.status_code != 200:
+				print response.status_code, response.reason
+				break
+			#Set URL to none to stop loop if no more links
+			url = None
+
+			data = response.text
+			root = ET.fromstring(data)
+			for element in root.findall("meterConsumption"):
+				month_data = dict()
+				#Get the cost data
+				month_data[element.find("endDate").text] = float(element.find("cost").text)
+				#append to cost
+				cost.append(month_data)
+
+				# Get the next URL
+			for elements in root.find("links"):
+				for link in element.findall("link"):
+					if link.get("linkDescription") == "next page":
+						url = self.domain + link.get("link")
+		#Return the cost for the time period
+		return cost
+	
+	def get_usage_and_cost(self,meter_id,months_ago):
+		# Get date in YYYY-MM-DD format from months ago
+		date_format = '%Y-%m-%d'
+		today = datetime.datetime.now()
+		start_date = today - datetime.timedelta(days=months_ago*30)
+		start_date = datetime.datetime.strftime(start_date, date_format)
+		resource = self.domain + '/meter/%s/consumptionData' % str(meter_id)
+
+		usage_and_cost = []
+
+		url = resource + '?page=1&startDate=' + start_date
+
+		while url:
+			print(url)
+
+			response = requests.get(url, auth=(self.username, self.password))
+
+			if response.status_code != 200:
+				print response.status_code, response.reason
+				break
+			#Set URL to none to stop loop if no more links
+			url = None
+
+			data = response.text
+			root = ET.fromstring(data)
+			for element in root.findall("meterConsumption"):
+				month_data = dict()
+				#Get the usage and cost data
+				usage_cost = []
+				usage_cost.append(float(element.find("usage").text))
+				usage_cost.append(float(element.find("cost").text))
+
+				#match with the date
+				month_data[element.find("endDate").text] = usage_cost
+				
+				#append to usage
+				usage_and_cost.append(month_data)
+
+				# Get the next URL
+			for elements in root.find("links"):
+				for link in element.findall("link"):
+					if link.get("linkDescription") == "next page":
+						url = self.domain + link.get("link")
+		#Return the cost for the time period
+		return usage_and_cost
+
 	def get_headers(self):
 		headers = {}
-
 		headers["Authorization"] = "Basic %s" % get_auth_token(username=self.username,password=self.password)
 
 		return headers
@@ -79,7 +221,6 @@ def get_auth_token(auth = None, username = None, password = None, do_print = Fal
         result = b64encode(b"%s" % auth).decode("ascii")
     else:
         result = b64encode(b"{0}:{1}".format(username, password).decode("ascii"))
-
     if do_print is True:
         print "your auth_token: %s" % result
 
