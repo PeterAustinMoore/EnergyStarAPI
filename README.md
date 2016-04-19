@@ -43,56 +43,56 @@ Errors are returned, unfortunately, not uniformly returned (either as HTML or XM
 	get_account_info()
 
 Returns: account information (XML)
-	```
-	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-	<account>
-		<id>12341</id>
-		<username>joebobonejob</username>
-		<password>*********</password>
-		<webserviceUser>true</webserviceUser>
-		<searchable>true</searchable>
-		<includeTestPropertiesInGraphics>true</includeTestPropertiesInGraphics>
-		<contact>
-			<address address1="2412 First St" address2="Apt 222" city="St Petersburg" state="FL" postalCode="61234" country="US"/>
-			<email>temp@aol.com</email>
-			<firstName>Joe</firstName>
-			<phone>1234123412</phone>
-			<lastName>Bob</lastName>
-			<jobTitle>Data Analyst</jobTitle>
-		</contact>
-		<organization name="FirstAnalytics">
-			<primaryBusiness>Data Center</primaryBusiness>
-			<energyStarPartner>false</energyStarPartner>
-		</organization>
-		<securityAnswers/>
-	</account>
-	```
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<account>
+	<id>12341</id>
+	<username>joebobonejob</username>
+	<password>*********</password>
+	<webserviceUser>true</webserviceUser>
+	<searchable>true</searchable>
+	<includeTestPropertiesInGraphics>true</includeTestPropertiesInGraphics>
+	<contact>
+		<address address1="2412 First St" address2="Apt 222" city="St Petersburg" state="FL" postalCode="61234" country="US"/>
+		<email>temp@aol.com</email>
+		<firstName>Joe</firstName>
+		<phone>1234123412</phone>
+		<lastName>Bob</lastName>
+		<jobTitle>Data Analyst</jobTitle>
+	</contact>
+	<organization name="FirstAnalytics">
+		<primaryBusiness>Data Center</primaryBusiness>
+		<energyStarPartner>false</energyStarPartner>
+	</organization>
+	<securityAnswers/>
+</account>
+```
 	
 	get_building_info(prop_id)
 
 Returns: building information (XML)
-	```
-	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-	<building>
-		<name>1234 ABC Building</name>
-		<address address1="1234 ABC St." city="Newark" state="NJ" postalCode="09231" county="Newark" country="US"/>
-		<constructionStatus>Existing</constructionStatus>
-		<primaryFunction>Data Center</primaryFunction>
-		<yearBuilt>1910</yearBuilt>
-		<grossFloorArea units="Square Feet" temporary="false" default="N/A"><value>4800</value></grossFloorArea>
-		<occupancyPercentage>25</occupancyPercentage>
-		<isFederalProperty>false</isFederalProperty>
-		<accessLevel>Read</accessLevel>
-		<audit>
-			<createdBy>Joe</createdBy>
-			<createdByAccountId>11111</createdByAccountId>
-			<createdDate>2014-06-18T12:27:24.000-04:00</createdDate>
-			<lastUpdatedBy>Joe</lastUpdatedBy>
-			<lastUpdatedByAccountId>11111</lastUpdatedByAccountId>
-			<lastUpdatedDate>2016-03-18T14:25:57.000-04:00</lastUpdatedDate>
-		</audit>
-	</building>
-	```
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<building>
+	<name>1234 ABC Building</name>
+	<address address1="1234 ABC St." city="Newark" state="NJ" postalCode="09231" county="Newark" country="US"/>
+	<constructionStatus>Existing</constructionStatus>
+	<primaryFunction>Data Center</primaryFunction>
+	<yearBuilt>1910</yearBuilt>
+	<grossFloorArea units="Square Feet" temporary="false" default="N/A"><value>4800</value></grossFloorArea>
+	<occupancyPercentage>25</occupancyPercentage>
+	<isFederalProperty>false</isFederalProperty>
+	<accessLevel>Read</accessLevel>
+	<audit>
+		<createdBy>Joe</createdBy>
+		<createdByAccountId>11111</createdByAccountId>
+		<createdDate>2014-06-18T12:27:24.000-04:00</createdDate>
+		<lastUpdatedBy>Joe</lastUpdatedBy>
+		<lastUpdatedByAccountId>11111</lastUpdatedByAccountId>
+		<lastUpdatedDate>2016-03-18T14:25:57.000-04:00</lastUpdatedDate>
+	</audit>
+</building>
+```
 	
 	get_usage(meter_id, months_ago)
 
