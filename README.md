@@ -43,6 +43,7 @@ Errors are returned, unfortunately, not uniformly returned (either as HTML or XM
 	get_account_info()
 
 Returns: account information (XML)
+	```
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<account>
 		<id>12341</id>
@@ -65,10 +66,12 @@ Returns: account information (XML)
 		</organization>
 		<securityAnswers/>
 	</account>
-
+	```
+	
 	get_building_info(prop_id)
 
 Returns: building information (XML)
+	```
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<building>
 		<name>1234 ABC Building</name>
@@ -89,7 +92,8 @@ Returns: building information (XML)
 			<lastUpdatedDate>2016-03-18T14:25:57.000-04:00</lastUpdatedDate>
 		</audit>
 	</building>
-
+	```
+	
 	get_usage(meter_id, months_ago)
 
 Returns an array of monthly usage for the meter from the specified months ago
