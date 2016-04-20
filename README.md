@@ -9,14 +9,14 @@ Author Peter Moore
 ## Getting Started
 The connector has two major classes:
 
-1. Energy_Star_Test_Client
-2. Energy_Star_Cleint
+1. EnergyStarTestClient
+2. EnergyStarClient
 
 Both are initiated in a similar fashion:
 ```python
-from EnergyStarAPI import Energy_Star_Test_Client, Energy_Star_Client
-ES_test_client = Energy_Star_Test_Client(username='myportfoliousername', password='mypassword')
-ES_client = Energy_Star_Client(username='myusername',password='mypassword')
+from EnergyStarAPI import EnergyStarTestClient, EnergyStarClient
+ES_test_client = EnergyStarTestClient(username='myportfoliousername', password='mypassword')
+ES_client = EnergyStarClient(username='myusername',password='mypassword')
 ```
 _note:_ for testing, you must create a new account using
 ```python	
@@ -25,7 +25,7 @@ with open('xml-templates/account.xml','rb') as new_account:
 ```
 Once this is successfully created, use the new credentials as the authentication
 ```python
-new_test_client = Energy_Star_Test_Client(
+new_test_client = EnergyStarTestClient(
 	username='new_account_Username',
 	password='new_account_password'
 	)
@@ -93,7 +93,18 @@ Returns: building information (XML)
 	</audit>
 </building>
 ```
-	
+	get_meter_list(prop_id)
+
+Returns a dictionary of meters and their types associated with the property
+
+	{123456:'Electric',4401234:'Natural Gas',1350101:'Municipally Supplied Potable Water - Mixed Indoor/Outdoor'}
+
+	get_meter_type(meter_id)
+
+Returns the type of meter
+
+	'Electric' 'Natural Gas' 'Municipally Supplied Potable Water - Mixed Indoor/Outdoor' etc
+
 	get_usage(meter_id, months_ago)
 
 Returns an array of monthly usage for the meter from the specified months ago
