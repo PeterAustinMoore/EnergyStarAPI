@@ -65,11 +65,13 @@ Returns: account information (XML)
 		<energyStarPartner>false</energyStarPartner>
 	</organization>
 	<securityAnswers/>
-</account>```
+</account>
+```
 
 
 ```python
-get_building_info(prop_id)```
+get_building_info(prop_id)
+```
 
 Returns: building information (XML)
 ```xml
@@ -101,7 +103,7 @@ get_meter_list(prop_id)
 
 Returns a dictionary of meters and their types associated with the property
 
-```json
+```javascript
 {123456:'Electric',4401234:'Natural Gas',1350101:'Municipally Supplied Potable Water - Mixed Indoor/Outdoor'}
 ```
 ```python
@@ -116,7 +118,7 @@ get_usage(meter_id, months_ago)
 ```
 Returns an array of monthly usage for the meter from the specified months ago
 
-```json
+```javascript
 [{'2016-03-31':102},{'2016-04-30':94.5}]
 ```
 ```python
@@ -124,7 +126,7 @@ get_cost(meter_id, months_ago)
 ```
 Returns an array monthly cost for the meter from the specified months ago
 
-```json
+```javascript
 [{'2016-03-31':23.5},{'2016-04-30':20.9}]
 ```
 ```python
@@ -132,6 +134,6 @@ get_usage_and_cost(meter_id, months_ago)
 ```
 
 Returns an array of monthly usage and cost from the specified months ago
-```json
+```javascript
 [{'2016-03-31':[102,23.5]},{'2016-04-30':[94.5,20.9]}]
 ```
