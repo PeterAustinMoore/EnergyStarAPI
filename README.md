@@ -1,7 +1,7 @@
 # EnergyStarAPI
 EnergyStar API Python connector
 
-##About
+## About
 Created on 4/13/2016
 
 Author Peter Moore
@@ -18,8 +18,8 @@ from EnergyStarAPI import EnergyStarTestClient, EnergyStarClient
 ES_test_client = EnergyStarTestClient(username='myportfoliousername', password='mypassword')
 ES_client = EnergyStarClient(username='myusername',password='mypassword')
 ```
-_note:_ for testing, you must create a new account using
-```python	
+_note:_ for testing, you must create a new account by first updating your email address in [test_account.xml](xml-templates/test_account.xml) and then running:
+```python
 with open('xml-templates/account.xml','rb') as new_account:
 	ES_test_client.create_account(new_account)
 ```
@@ -36,7 +36,7 @@ Full documentation can be found `https://portfoliomanager.energystar.gov/webserv
 
 Successful EnergyStar API calls return XML responses that need to be parsed.
 
-Errors are returned, unfortunately, not uniformly returned (either as HTML or XML). Therefore the full text of error response is returned at this time.
+Errors are, unfortunately, not uniformly returned (either as HTML or XML). Therefore the full text of error response is returned at this time.
 
 ## Functions
 
@@ -65,10 +65,11 @@ Returns: account information (XML)
 		<energyStarPartner>false</energyStarPartner>
 	</organization>
 	<securityAnswers/>
-</account>
-```
-	
-	get_building_info(prop_id)
+</account>```
+
+
+```python
+get_building_info(prop_id)```
 
 Returns: building information (XML)
 ```xml
@@ -93,32 +94,44 @@ Returns: building information (XML)
 	</audit>
 </building>
 ```
-	get_meter_list(prop_id)
+
+```python
+get_meter_list(prop_id)
+```
 
 Returns a dictionary of meters and their types associated with the property
 
-	{123456:'Electric',4401234:'Natural Gas',1350101:'Municipally Supplied Potable Water - Mixed Indoor/Outdoor'}
-
-	get_meter_type(meter_id)
-
+```json
+{123456:'Electric',4401234:'Natural Gas',1350101:'Municipally Supplied Potable Water - Mixed Indoor/Outdoor'}
+```
+```python
+get_meter_type(meter_id)
+```
 Returns the type of meter
 
 	'Electric' 'Natural Gas' 'Municipally Supplied Potable Water - Mixed Indoor/Outdoor' etc
 
-	get_usage(meter_id, months_ago)
-
+```python
+get_usage(meter_id, months_ago)
+```
 Returns an array of monthly usage for the meter from the specified months ago
 
-	[{'2016-03-31':102},{'2016-04-30':94.5}]
-
-	get_cost(meter_id, months_ago)
-
+```json
+[{'2016-03-31':102},{'2016-04-30':94.5}]
+```
+```python
+get_cost(meter_id, months_ago)
+```
 Returns an array monthly cost for the meter from the specified months ago
-	
-	[{'2016-03-31':23.5},{'2016-04-30':20.9}]
 
-	get_usage_and_cost(meter_id, months_ago)
+```json
+[{'2016-03-31':23.5},{'2016-04-30':20.9}]
+```
+```python
+get_usage_and_cost(meter_id, months_ago)
+```
 
 Returns an array of monthly usage and cost from the specified months ago
-
-	[{'2016-03-31':[102,23.5]},{'2016-04-30':[94.5,20.9]}]
+```json
+[{'2016-03-31':[102,23.5]},{'2016-04-30':[94.5,20.9]}]
+```
